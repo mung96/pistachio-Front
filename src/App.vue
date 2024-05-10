@@ -1,19 +1,15 @@
-<script setup></script>
+<script setup>
+import { RouterView } from "vue-router";
+
+</script>
 
 <template>
   <div>
   <p>앱</p>
 </div>
+<RouterView/>
 </template>
 
 <style scoped>
-p {
-  flex-direction: column;
-  display: flex;
 
-  width: 100px;
- 
-  color: red;
-  height: 100px;
-}
 </style>
