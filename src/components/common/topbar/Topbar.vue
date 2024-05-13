@@ -1,6 +1,6 @@
 <template>
-  <header :class="{ scroll: isScroll }">
-    <Flex width="360px" height="56px" align="center" justify="center">
+  <header :class="scrollDirection">
+    <Flex width="100%" height="56px" align="center" justify="center">
       <Logo />
     </Flex>
   </header>
@@ -11,24 +11,33 @@ import Flex from "@/design/Flex.vue";
 import Logo from "@/assets/svg/logo.svg";
 
 import { ref } from "vue";
-const isScroll = ref(false);
+const scrollDirection = ref("");
+
+let lastScrollPosition = window.scrollY;
 window.addEventListener("scroll", function () {
-  isScroll.value = true;
-});
-window.addEventListener("scrollend", function () {
-  isScroll.value = false;
+  const curScrollPosition = window.scrollY;
+  curScrollPosition - lastScrollPosition > 0
+    ? (scrollDirection.value = "scroll-down")
+    : (scrollDirection.value = "scroll-up");
+  lastScrollPosition = curScrollPosition;
 });
 </script>
 
 <style scoped>
 header {
   position: fixed;
+  width: 100%;
   top: 0;
   background-color: white;
+  transition: 0.4s;
 }
 
-.scroll {
+.scroll-up {
+  /* 혹시 다른 내용이 들어갈수도 있어서 남겨둠 */
+  transform: translateY(0);
+}
+
+.scroll-down {
   transform: translateY(-100%);
-  transition: 1s;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <nav @scroll="handleScroll" v-if="!isScroll">
     <Flex
-      width="360px"
+      width="100%"
       height="56px"
       align="center"
       basis="90px"
@@ -20,7 +20,7 @@ import { pages } from "@/constants/navbar";
 
 <style scoped>
 nav {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   bottom: 0;
   background-color: white;
