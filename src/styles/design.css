@@ -1,33 +1,38 @@
-:root{
-    /* 색상지정 */
-    --main-color:#CFE6CE;
-    --sub-color:#50D6B0;
-    --pinkred-color: #F7385A;
-    --green-color: #14D863;
+:root {
+  /* 색상지정 */
+  --main-color: #cfe6ce;
+  --sub-color: #50d6b0;
+  --pinkred-color: #f7385a;
+  --green-color: #14d863;
 
-    --gray100-color:#F6F7F7;
-    --gray200-color:#D4D5D8;
-    --gray600-color:#6B6E76;
-    --gray700-color:#52555B;
+  --gray100-color: #f6f7f7;
+  --gray200-color: #d4d5d8;
+  --gray600-color: #6b6e76;
+  --gray700-color: #52555b;
 
-    /* typograpy 지정 = fonts-size + line-height */
-    --xl-font: 20px/28px ;
-    --lg-font: 18px/28px ;
-    --base-font: 16px/24px ;
-    --sm-font: 14px/20px ;
-    --xs-font: 12px/20px ;
+  /* typograpy 지정 = fonts-size + line-height */
+  --xl-pre-font: 20px/28px pretendard;
+  --lg-pre-font: 18px/28px pretendard;
+  --base-pre-font: 16px/24px pretendard;
+  --sm-pre-font: 14px/20px pretendard;
+  --xs-pre-font: 12px/14px pretendard;
+  --xl-mm-font: 20px/28px meetme;
+  --lg-mm-font: 18px/28px meetme;
+  --base-mm-font: 16px/24px meetme;
+  --sm-mm-font: 14px/20px meetme;
+  --xs-mm-font: 12px/14px meetme;
 
-    /* gap, radius 변수 지정 */
-    --spacing-1 : 4px;
-    --spacing-2 : 8px;
-    --spacing-3 : 12px;
-    --spacing-4 : 16px;
-    --spacing-5 : 20px;
-    --spacing-6 : 24px;
-    --spacing-7 : 28px;
-    --spacing-8 : 32px;
-    --spacing-9 : 36px;
-    --spacing-10 : 40px;
-    --spacing-11 : 44px;
-    --spacing-12 : 48px;
+  /* gap, radius 변수 지정 */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-11: 44px;
+  --spacing-12: 48px;
 }
