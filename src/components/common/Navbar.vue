@@ -1,6 +1,8 @@
 <template>
   <nav>
-     <Flex gap="12px">
+    <span>안녕하세요</span>
+     <Flex gap="32px" >
+ 
         <RouterLink :to=PATH.FEED><div class="navbar-item">피드</div></RouterLink>
         <RouterLink :to=PATH.SEARCH><div class="navbar-item">검색</div></RouterLink>
         <RouterLink :to=PATH.CREATE_POST><div class="navbar-item">게시글 추가</div></RouterLink>
@@ -13,8 +15,17 @@
     import { RouterLink } from "vue-router";
     import {PATH} from "@/constants/router"
     import Flex from "@/design/Flex.vue";
+    
 </script>
 
 <style scoped>
+
+div{
+  background-color: var(--main-color);
+ 
+}
+span{
+  font: var(--xl-font) sans-serif ;
+}
 
 </style>
