@@ -19,6 +19,7 @@ const props = defineProps({
   width: String,
   height: String,
   postition: String,
+  basis: String,
 });
 
 let flexStyle = {
@@ -41,6 +42,7 @@ watchEffect(() => {
     width: props.width,
     height: props.height,
     postition: props.postition,
+    "flex-basis": props.basis,
   };
 });
 </script>

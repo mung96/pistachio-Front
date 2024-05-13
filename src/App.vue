@@ -7,8 +7,13 @@ import Navbar from "@/components/common/navbar/Navbar.vue";
   <div>
     <Navbar />
     <p>앱</p>
+    <p>앱</p>
   </div>
   <RouterView />
 </template>
 
-<style scoped></style>
+<style scoped>
+p {
+  height: 500px;
+}
+</style>

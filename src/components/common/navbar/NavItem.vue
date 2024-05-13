@@ -21,6 +21,9 @@ span {
   font: var(--xs-pre-font);
 }
 div {
-  min-width: 40px;
+  min-width: 90px;
+}
+a {
+  flex-grow: 1;
 }
 </style>
