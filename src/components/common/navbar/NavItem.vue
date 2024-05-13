@@ -18,6 +18,9 @@ defineProps({
 
 <style scoped>
 span {
-  font: var(--xs-font) sans-serif;
+  font: var(--xs-pre-font);
+}
+div {
+  min-width: 40px;
 }
 </style>
