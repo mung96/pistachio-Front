@@ -16,17 +16,6 @@
 import Flex from "@/design/Flex.vue";
 import NavItem from "@/components/common/navbar/NavItem.vue";
 import { pages } from "@/constants/navbar";
-
-// import { ref } from "vue";
-
-// const isScroll = ref(false);
-
-// window.addEventListener("scroll", function () {
-//   isScroll.value = true;
-// });
-// window.addEventListener("scrollend", function () {
-//   isScroll.value = false;
-// });
 </script>
 
 <style scoped>

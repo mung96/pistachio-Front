@@ -1,18 +1,28 @@
 <template>
-  <RouterLink :to="page.path">
+  <RouterLink :to="props.page.path">
     <Flex direction="column" align="center" gap="2px">
-      <component :is="page.icon" width="24" />
-      <span>{{ page.name }}</span>
+      <component v-if="!isActive" :is="props.page.icon" width="24" />
+      <component v-else :is="props.page.fill" width="24" />
+      <span v-if="!isActive">{{ page.name }}</span>
+      <span v-else class="active-span">{{ page.name }}</span>
     </Flex>
   </RouterLink>
 </template>
 
 <script setup>
 import Flex from "@/design/Flex.vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
+import { computed } from "vue";
 
-defineProps({
+const props = defineProps({
   page: Object,
+});
+
+const route = useRoute();
+console.log(route.path);
+const isActive = computed(() => {
+  console.log(props.page);
+  return route.path === props.page.path;
 });
 </script>
 
@@ -25,5 +35,9 @@ div {
 }
 a {
   flex-grow: 1;
+}
+
+.active-span {
+  color: var(--sub-color);
 }
 </style>
