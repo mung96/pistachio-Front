@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import FeedPage from '@/pages/feed/FeedPage.vue';
 import SearchPage from '@/pages/search/SearchPage.vue';
 import CreatePostPage from '@/pages/createpost/CreatePostPage.vue';
-import MyPage from '@/pages/mypage/MyPage.vue';
+import MyPage from '@/pages/mypage/Mypage.vue';
 import MyLikePage from '@/pages/mypage/MyLikePage.vue';
 import MyPostPage from '@/pages/mypage/MyPostPage.vue';
 import MyDonationPage from '@/pages/mypage/MyDonationPage.vue';
