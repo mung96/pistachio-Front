@@ -1,7 +1,7 @@
 <template>
   <main>
-    <Flex direction="column">
-      <Searchbar class="searchbar" />
+    <Searchbar class="searchbar" />
+    <Flex direction="column" class="results">
       <Result v-for="result in results" :key="result" :result="result" />
     </Flex>
   </main>
@@ -21,7 +21,7 @@ results.value = searchResult;
 </script>
 
 <style scoped>
-main {
+.results {
   padding-left: var(--spacing-4);
   padding-right: var(--spacing-4);
 }
