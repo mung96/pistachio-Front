@@ -6,7 +6,7 @@
       /></Flex>
       <p class="nickname">{{ result.nickname }}</p>
     </Flex>
-    <FollowBtn />
+    <FollowBtn :isFollow="result.isFollow" />
   </Flex>
 </template>
 

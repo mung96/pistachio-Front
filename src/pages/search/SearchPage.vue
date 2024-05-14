@@ -1,7 +1,7 @@
 <template>
   <main>
     <Flex direction="column">
-      <Searchbar />
+      <Searchbar class="searchbar" />
       <Result v-for="result in results" :key="result" :result="result" />
     </Flex>
   </main>

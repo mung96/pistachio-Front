@@ -1,8 +1,16 @@
 <template>
-  <button>팔로우</button>
+  <button :class="isFollow ? 'follow' : 'unfollow'">
+    {{ isFollow ? FOOLLW_TRUE_BTN_TEXT : FOLLOW_FALSE_BTN_TEXT }}
+  </button>
 </template>
 
-<script setup></script>
+<script setup>
+import { FOOLLW_TRUE_BTN_TEXT, FOLLOW_FALSE_BTN_TEXT } from "@/constants/ui";
+defineProps({
+  isFollow: Boolean,
+});
+console.log(1);
+</script>
 
 <style scoped>
 button {
@@ -11,6 +19,11 @@ button {
   background-color: white;
 
   font: var(--sm-mm-font);
+}
+.follow {
+  color: var(--gray600-color);
+}
+.unfollow {
   color: var(--sub-color);
 }
 </style>
