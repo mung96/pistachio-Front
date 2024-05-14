@@ -1,5 +1,5 @@
 <template>
-  <nav @scroll="handleScroll" v-if="!isScroll">
+  <nav>
     <Flex
       width="100%"
       height="56px"

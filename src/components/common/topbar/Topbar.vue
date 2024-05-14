@@ -41,11 +41,13 @@ const scrollDirection = ref("");
 let lastScrollPosition = window.scrollY;
 
 window.addEventListener("scroll", function () {
+  console.log(window.scrollY);
   const curScrollPosition = window.scrollY;
   curScrollPosition - lastScrollPosition > 0
     ? (scrollDirection.value = "scroll-down")
     : (scrollDirection.value = "scroll-up");
   lastScrollPosition = curScrollPosition;
+  // console.log(scrollDirection.value);
 });
 </script>
 

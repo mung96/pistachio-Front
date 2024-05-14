@@ -7,15 +7,19 @@ import Topbar from "./components/common/topbar/Topbar.vue";
 <template>
   <div>
     <Topbar />
+    <div class="layout">
+      <RouterView />
+    </div>
     <Navbar />
-    <p>앱</p>
-    <p>앱</p>
   </div>
-  <RouterView />
 </template>
 
 <style scoped>
 p {
   height: 500px;
+}
+.layout {
+  margin-top: 56px;
+  padding-top: --var(--spacing-4);
 }
 </style>
