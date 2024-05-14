@@ -1,8 +1,10 @@
 <template>
   <section>
-    <FeedProfile :profile="props.feed.profile" />
-    <FeedImages :images="props.feed.content.images" />
-    <FeedContent :content="props.feed.content" />
+    <Flex gap="8px" direction="column">
+      <FeedProfile :profile="props.feed.profile" />
+      <FeedImages :images="props.feed.content.images" />
+      <FeedContent :content="props.feed.content" />
+    </Flex>
   </section>
 </template>
 
@@ -10,10 +12,11 @@
 import FeedProfile from "./FeedProfile.vue";
 import FeedContent from "./FeedContent.vue";
 import FeedImages from "./FeedImages.vue";
+import Flex from "@/design/Flex.vue";
 
 const props = defineProps({
   feed: Object,
 });
 </script>
 
-<style></style>
+<style scoped></style>

@@ -1,10 +1,16 @@
 <template>
   <Flex direction="column" padding-left="16px" padding-right="16px" gap="4px">
     <Flex align="center" gap="8px">
-      <HeartIcon />
-      <MoneyIcon />
+      <div @click="handleClickHeart">
+        <HeartIcon :fill="isLike ? '#50d6b0' : 'none'" />
+      </div>
+      <div>
+        <MoneyIcon />
+      </div>
     </Flex>
-    <p class="like-cnt">{{ content.likeCnt }} LIKES</p>
+    <p class="like-cnt">
+      {{ isLike ? content.likeCnt-- : content.likeCnt++ }} LIKES
+    </p>
     <p class="title">{{ content.title }}</p>
     <Flex align="center" gap="8px">
       <p class="body">{{ content.body }}</p>
@@ -18,10 +24,18 @@
 import Flex from "@/design/Flex.vue";
 import MoneyIcon from "@/assets/svg/moneyIcon.svg";
 import HeartIcon from "@/assets/svg/heartIcon.svg";
+import { ref } from "vue";
 
 const props = defineProps({
   content: Object,
 });
+
+const isLike = ref(true);
+
+const handleClickHeart = () => {
+  isLike.value = !isLike.value;
+  console.log(1);
+};
 </script>
 
 <style scoped>
