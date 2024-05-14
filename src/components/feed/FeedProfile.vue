@@ -6,16 +6,16 @@
     align="center"
   >
     <Flex align="center" gap="8px">
-      <div><p>프로필</p></div>
+      <div class="profile-img"><img :src="props.profile.image" /></div>
       <Flex direction="column">
-        <p class="nickname">닉네임</p>
-        <p class="location">지역</p>
+        <p class="nickname">{{ profile.nickname }}</p>
+        <p class="location">{{ profile.location }}</p>
       </Flex>
     </Flex>
 
     <Flex gap="8px" align="center">
-      <p class="project">케냐에 학교 짓기</p>
-      <p class="organization">UNICEF</p>
+      <p class="project">{{ profile.project }}</p>
+      <p class="organization">{{ profile.organization }}</p>
       <button class="follow-btn">팔로우</button>
     </Flex>
   </Flex>
@@ -23,9 +23,18 @@
 
 <script setup>
 import Flex from "@/design/Flex.vue";
+
+const props = defineProps({
+  profile: Object,
+});
 </script>
 
 <style scoped>
+.profile-img img {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
 .nickname {
   font: var(--xs-pre-font);
   font-weight: 700;
@@ -35,11 +44,11 @@ import Flex from "@/design/Flex.vue";
   color: var(--gray600-color);
 }
 .project {
-  font: var(--base-mm-font);
+  font: var(--lg-mm-font);
   color: var(--sub-color);
 }
 .organization {
-  font: var(--sm-mm-font);
+  font: var(--lg-mm-font);
   font-weight: 700;
 }
 .follow-btn {

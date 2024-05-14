@@ -1,12 +1,46 @@
 <template>
-  <div></div>
+  <Flex direction="column" padding-left="16px" padding-right="16px" gap="4px">
+    <Flex align="center" gap="8px">
+      <HeartIcon />
+      <MoneyIcon />
+    </Flex>
+    <p class="like-cnt">{{ content.likeCnt }} LIKES</p>
+    <p class="title">{{ content.title }}</p>
+    <Flex align="center" gap="8px">
+      <p class="body">{{ content.body }}</p>
+      <p class="more">...더보기</p>
+    </Flex>
+    <p class="see-comment">댓글 모두 보기</p>
+  </Flex>
 </template>
 
-<script setup></script>
+<script setup>
+import Flex from "@/design/Flex.vue";
+import MoneyIcon from "@/assets/svg/moneyIcon.svg";
+import HeartIcon from "@/assets/svg/heartIcon.svg";
+
+const props = defineProps({
+  content: Object,
+});
+</script>
 
 <style scoped>
-div {
-  width: 360px;
-  height: 360px;
+.like-cnt {
+  font: var(--base-mm-font);
+  color: var(--sub-color);
+}
+.title {
+  font: var(--sm-pre-font);
+  font-weight: 700;
+}
+.body {
+  font: var(--sm-pre-font);
+  font-weight: 700;
+}
+
+.see-comment,
+.more {
+  font: var(--xs-pre-font);
+  color: var(--gray600-color);
 }
 </style>

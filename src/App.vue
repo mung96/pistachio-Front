@@ -11,8 +11,6 @@ import Topbar from "./components/common/topbar/Topbar.vue";
       <RouterView />
     </div>
     <Navbar />
-    <p>앱</p>
-    <p>앱</p>
   </div>
 </template>
 
