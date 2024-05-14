@@ -19,9 +19,8 @@ const props = defineProps({
 });
 
 const route = useRoute();
-console.log(route.path);
+
 const isActive = computed(() => {
-  console.log(props.page);
   return route.path === props.page.path;
 });
 </script>
