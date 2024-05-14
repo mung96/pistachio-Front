@@ -15,11 +15,9 @@ import Topbar from "./components/common/topbar/Topbar.vue";
 </template>
 
 <style scoped>
-p {
-  height: 500px;
-}
 .layout {
   margin-top: 56px;
-  padding-top: --var(--spacing-4);
+  padding-top: var(--spacing-4);
+  padding-bottom: 56px;
 }
 </style>

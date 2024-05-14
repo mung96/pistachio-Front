@@ -16,14 +16,14 @@
     <Flex gap="8px" align="center">
       <p class="project">{{ profile.project }}</p>
       <p class="organization">{{ profile.organization }}</p>
-      <button class="follow-btn">팔로우</button>
+      <FollowBtn />
     </Flex>
   </Flex>
 </template>
 
 <script setup>
 import Flex from "@/design/Flex.vue";
-
+import FollowBtn from "../common/button/FollowBtn.vue";
 const props = defineProps({
   profile: Object,
 });
@@ -50,13 +50,5 @@ const props = defineProps({
 .organization {
   font: var(--lg-mm-font);
   font-weight: 700;
-}
-.follow-btn {
-  border: none;
-  outline: none;
-  background-color: white;
-
-  font: var(--sm-mm-font);
-  color: var(--sub-color);
 }
 </style>
