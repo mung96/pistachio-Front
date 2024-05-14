@@ -18,7 +18,7 @@ const props = defineProps({
   paddingRight: String,
   width: String,
   height: String,
-  postition: String,
+  position: String,
   basis: String,
 });
 
@@ -41,7 +41,7 @@ watchEffect(() => {
     "padding-right": props.paddingRight,
     width: props.width,
     height: props.height,
-    postition: props.postition,
+    position: props.position,
     "flex-basis": props.basis,
   };
 });

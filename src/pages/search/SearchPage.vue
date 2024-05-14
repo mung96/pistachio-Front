@@ -1,11 +1,13 @@
 <template>
-    <div>검색 페이지</div>
-  </template>
-  
-  <script setup>
-  
-  </script>
-  
-  <style>
-  
-  </style>
+  <Flex>
+    <Searchbar />
+  </Flex>
+</template>
+
+<script setup>
+import Flex from "@/design/Flex.vue";
+
+import Searchbar from "@/components/search/Searchbar.vue";
+</script>
+
+<style scoped></style>
