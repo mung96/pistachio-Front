@@ -15,7 +15,7 @@
       :color="palette.pinkred"
     />
 
-    <Button :disabled="!isFormatValid" onClick="handleBtnClick"
+    <Button :disabled="!isFormatValid" @click="handleBtnClick"
       >이메일 인증</Button
     >
   </div>
@@ -34,6 +34,8 @@ import {
   EMAIL_FORMAT_SUCCESS_MESSAGE,
 } from "@/constants/ui";
 import { checkEmail } from "@/utils/validator";
+import { BASE_URL } from "@/constants/api";
+import { getEmailDuplicate } from "@/apis/signup/getEmailDuplicate";
 
 const email = ref("");
 const isFormatValid = ref(false);
@@ -41,8 +43,11 @@ const isFormatValid = ref(false);
 const handleInput = (e) => {
   email.value = e.target.value;
   isFormatValid.value = checkEmail(email.value);
+  console.log(BASE_URL);
 };
 const handleBtnClick = () => {
+  const response = getEmailDuplicate(email.value);
+  response.then((res) => console.log(res.status));
   //이메일 중복확인 보내기 API
   //실패하면 가입된 메일입니다.
   //성공하면 인증메일 발송하고 다음 페이지
