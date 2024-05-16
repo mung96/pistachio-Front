@@ -4,3 +4,5 @@ export const FOLLOW_FALSE_BTN_TEXT = "팔로우";
 export const FOOLLW_TRUE_BTN_TEXT = "팔로우한 상대";
 
 export const POST_IMAGE_MAX = 10;
+
+export const POST_CONTENT_LENGTH = 300;
