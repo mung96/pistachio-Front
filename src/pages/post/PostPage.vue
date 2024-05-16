@@ -1,4 +1,8 @@
 <template>
-  <p>글쓰기</p>
+  <form @submit.prevent>
+    <ImageUpload />
+  </form>
 </template>
-<script setup></script>
+<script setup>
+import ImageUpload from "@/components/post/ImageUpload.vue";
+</script>
