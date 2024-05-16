@@ -44,7 +44,6 @@ const route = useRoute();
 // route에 따라 렌더링 로직 다시짜야할듯
 const type = computed(() => {
   const key = Object.keys(PATH).findIndex((key) => PATH[key] === route.path);
-  console.log(typeof TOP_BAR_TYPE[Object.keys(PATH)[key]]);
   return TOP_BAR_TYPE[Object.keys(PATH)[key]];
 });
 
@@ -53,7 +52,6 @@ const scrollDirection = ref("");
 let lastScrollPosition = window.scrollY;
 
 window.addEventListener("scroll", function () {
-  console.log(window.scrollY);
   const curScrollPosition = window.scrollY;
   curScrollPosition - lastScrollPosition > 0
     ? (scrollDirection.value = "scroll-down")

@@ -1,10 +1,12 @@
 <template>
-  <Flex direction="column">
+  <Flex direction="column" gap="4px">
     <Flex position="relative">
       <input :placeholder="placeholder" />
       <component v-if="icon" :is="icon" width="16" class="input-icon" />
     </Flex>
-    <p v-show="message" class="message">{{ message }}</p>
+    <p v-show="message" class="message" :style="{ color: 'color' }">
+      {{ message }}
+    </p>
   </Flex>
 </template>
 
@@ -15,6 +17,7 @@ const props = defineProps({
   icon: Object,
   placeholder: String,
   message: String,
+  color: String,
 });
 </script>
 
@@ -50,5 +53,13 @@ input::placeholder {
   top: 50%;
   right: 16px;
   transform: translateY(-50%);
+}
+
+.error {
+  color: var(--pinkred-color);
+}
+
+.success {
+  color: var(--pinkred-green);
 }
 </style>
