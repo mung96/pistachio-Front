@@ -5,7 +5,7 @@ import ArrowLeftIcon from "@/assets/svg/arrowLeftIcon.svg";
 export const PATH = {
   FEED: "/",
   SEARCH: "/search",
-  POST: "/create-post",
+  POST: "/post",
 
   MY_PAGE: "/my-page",
   MY_DONATION: "/my-donation",
@@ -19,12 +19,12 @@ export const PATH = {
 export const NAME = {
   FEED: "feed",
   SEARCH: "search",
-  POST: "create-post",
+  POST: "post",
 
   MY_PAGE: "my-page",
   MY_DONATION: "my-donation",
   MY_LIKE: "my-like",
-  MY_POST: "post",
+  MY_POST: "my-post",
 
   LOGIN: "login",
   SIGNUP: "signup",
@@ -46,6 +46,6 @@ export const TOP_BAR_TYPE = {
   MY_LIKE: TOP_BAR_CONTENT.BACK,
   MY_POST: TOP_BAR_CONTENT.BACK,
 
-  // LOGIN:,
-  // SIGNUP: "not-login",
+  LOGIN: TOP_BAR_CONTENT.BACK,
+  SIGNUP: TOP_BAR_CONTENT.BACK,
 };
