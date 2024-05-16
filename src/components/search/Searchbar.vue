@@ -23,8 +23,6 @@ onMounted(() => {
 window.addEventListener("scroll", () => {
   isTop.value = search.value.getBoundingClientRect().y <= 0;
 });
-
-//서치바가 맨 위에 닿게 되면 full width를 점유하도록 하자.
 </script>
 
 <style scoped>

@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import FeedPage from "@/pages/feed/FeedPage.vue";
 import SearchPage from "@/pages/search/SearchPage.vue";
-import CreatePostPage from "@/pages/createpost/CreatePostPage.vue";
-import MyPage from "@/pages/mypage/MyPage.vue";
+import PostPage from "@/pages/post/PostPage.vue";
+import MyPage from "@/pages/mypage/Mypage.vue";
 import MyLikePage from "@/pages/mypage/MyLikePage.vue";
 import MyPostPage from "@/pages/mypage/MyPostPage.vue";
 import MyDonationPage from "@/pages/mypage/MyDonationPage.vue";
@@ -23,9 +23,9 @@ const router = createRouter({
 
     //게시글 추가
     {
-      path: PATH.CREATE_POST,
-      name: NAME.CREATE_POST,
-      component: CreatePostPage,
+      path: PATH.POST,
+      name: NAME.POST,
+      component: PostPage,
     },
 
     // 마이페이지

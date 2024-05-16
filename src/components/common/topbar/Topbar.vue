@@ -10,29 +10,41 @@
       padding-right="16px"
       padding-left="16px"
     >
-      <ArrowLeftIcon v-if="type === 'back'" width="24" height="24" />
-      <Logo v-if="type === 'main'" />
-      <span v-if="type !== 'main'">텍스트</span>
-      <BellIcon v-if="type !== 'not-login'" width="24" height="24" />
+      <component v-if="typeof type.left === 'object'" :is="type.left" />
+      <p v-else-if="typeof type.left === 'string'">{{ type.left }}</p>
+      <div v-else></div>
+
+      <component v-if="typeof type.center === 'object'" :is="type.center" />
+      <p v-else-if="typeof type.center === 'string'">{{ type.center }}</p>
+      <div v-else></div>
+
+      <component v-if="typeof type.right === 'object'" :is="type.right" />
+      <p v-else-if="typeof type.right === 'string'">{{ type.right }}</p>
+      <div v-else></div>
     </Flex>
   </header>
 </template>
 
 <script setup>
 import Flex from "@/design/Flex.vue";
-import Logo from "@/assets/svg/logo.svg";
-import BellIcon from "@/assets/svg/bellIcon.svg";
-import ArrowLeftIcon from "@/assets/svg/arrowLeftIcon.svg";
 
 import { ref, computed } from "vue";
 import { PATH, TOP_BAR_TYPE } from "@/constants/router";
 import { useRoute } from "vue-router";
+
+const props = defineProps({
+  type: Object,
+  left: Object | String,
+  center: Object | String,
+  right: Object | String,
+});
 
 const route = useRoute();
 
 // route에 따라 렌더링 로직 다시짜야할듯
 const type = computed(() => {
   const key = Object.keys(PATH).findIndex((key) => PATH[key] === route.path);
+  console.log(typeof TOP_BAR_TYPE[Object.keys(PATH)[key]]);
   return TOP_BAR_TYPE[Object.keys(PATH)[key]];
 });
 
@@ -47,7 +59,6 @@ window.addEventListener("scroll", function () {
     ? (scrollDirection.value = "scroll-down")
     : (scrollDirection.value = "scroll-up");
   lastScrollPosition = curScrollPosition;
-  // console.log(scrollDirection.value);
 });
 </script>
 
