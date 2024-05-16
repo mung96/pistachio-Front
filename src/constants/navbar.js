@@ -17,7 +17,7 @@ export const pages = [
     name: "글쓰기",
     icon: PostIcon,
     fill: PostFillIcon,
-    path: PATH.CREATE_POST,
+    path: PATH.POST,
   },
   {
     name: "마이페이지",
