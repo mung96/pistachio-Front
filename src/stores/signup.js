@@ -1,8 +1,16 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import { FIELD } from "@/constants/ui";
-import { checkEmail } from "@/utils/validator";
-
+import {
+  checkEmail,
+  checkUsername,
+  checkPwd,
+  checkPwdConfirm,
+} from "@/utils/validator";
+import { getEmailDuplicate } from "@/apis/signup/getEmailDuplicate";
+import { getUsernameDuplicate } from "@/apis/signup/getUsernameDuplicate";
+import { getEmailNumValid } from "@/apis/signup/getEmailNumValid";
+import { postUser } from "@/apis/signup/postUser";
 export const useSignupStore = defineStore("signup", () => {
   const user = ref({});
   const step = ref(FIELD.EMAIL);
@@ -23,21 +31,49 @@ export const useSignupStore = defineStore("signup", () => {
     return step.value;
   };
 
-  // const checkFormat =(field,inputData) =>{
-  //   if(field === FIELD.EMAIL){
-  //     return checkEmail(inputData);
-  //   }
-  //   if(field === FIELD.USER_NAME){
-  //     return check(inputData);
-  //   }
-  //   if(field === FIELD.EMAIL){
-  //     return checkEmail(inputData);
-  //   }
-  // }
+  const checkFormat = (field, inputData) => {
+    if (field === FIELD.EMAIL) {
+      return checkEmail(inputData);
+    }
+    if (field === FIELD.EMAIL_AUTH) {
+      return true;
+    }
+    if (field === FIELD.USER_NAME) {
+      return checkUsername(inputData);
+    }
+    if (field === FIELD.PWD) {
+      return checkPwd(inputData);
+    }
+    if (field === FIELD.PWD_CONFIRM) {
+      return checkPwdConfirm(inputData);
+    }
+  };
 
-  // const checkDuplicate =(field,inputData) =>{
-  //   if(field)
-  // }
+  const checkValidate = (field, inputData) => {
+    if (field === FIELD.EMAIL) {
+      return getEmailDuplicate(inputData);
+    }
+    if (field === FIELD.EMAIL_AUTH) {
+      return true;
+      // return getEmailNumValid(inputData);
+    }
+    if (field === FIELD.USER_NAME) {
+      return getUsernameDuplicate(inputData);
+    }
+    if (field === FIELD.PWD) {
+      //비밀번호 등록
+      return postUser(inputData);
+    }
+  };
 
-  return { user, step, setUser, setStep, getUser, getStep };
+  return {
+    user,
+    step,
+    setUser,
+    setStep,
+    getUser,
+    getStep,
+    checkFormat,
+    checkValidate,
+  };
 });

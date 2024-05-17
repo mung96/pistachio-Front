@@ -1,8 +1,14 @@
 <template>
-  <Flex direction="column" gap="4px">
+  <Flex direction="column" gap="8px">
     <Flex position="relative">
-      <input :placeholder="placeholder" />
-      <component v-if="icon" :is="icon" width="16" class="input-icon" />
+      <input :placeholder="placeholder" :type="type" />
+      <component
+        v-if="icon"
+        :is="icon"
+        width="16"
+        class="input-icon"
+        @click="handleIconClick"
+      />
     </Flex>
     <p v-if="message" class="message" :style="{ color: color }">
       {{ message }}
@@ -16,9 +22,16 @@ import Flex from "@/design/Flex.vue";
 const props = defineProps({
   icon: Object,
   placeholder: String,
+  type: String,
   message: String,
   color: String,
 });
+
+const emit = defineEmits(["iconClick"]);
+
+const handleIconClick = () => {
+  emit("iconClick");
+};
 </script>
 
 <style scoped>

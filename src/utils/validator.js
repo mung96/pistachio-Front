@@ -1,16 +1,16 @@
-import { EMAIL_REGEX, NICKNAME_REGEX, PASSWORD_REGEX } from "@/constants/regex";
+import { EMAIL_REGEX, USERNAME_REGEX, PWD_REGEX } from "@/constants/regex";
 export const checkEmail = (email) => {
   return EMAIL_REGEX.test(email);
 };
 
-export const checkNickname = (nickname) => {
-  return NICKNAME_REGEX.test(nickname);
+export const checkUsername = (username) => {
+  return USERNAME_REGEX.test(username);
 };
 
-export const checkPassword = (password) => {
-  return PASSWORD_REGEX.test(password);
+export const checkPwd = (pwd) => {
+  return PWD_REGEX.test(pwd);
 };
 
-export const checkPasswordConfirm = (password, passwordConfirm) => {
-  return password === passwordConfirm;
+export const checkPwdConfirm = (pwd, pwdConfirm) => {
+  return pwd === pwdConfirm;
 };
