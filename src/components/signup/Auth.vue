@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Title>이메일</Title>
+    <Title>{{ title }}</Title>
     <Input
       @input="handleInput"
-      v-model="email"
-      :placeholder="EMAIL_PLACEHOLDER"
+      v-model="inputData"
+      :placeholder="PLACEHOLDER[field]"
       :message="message"
       :color="isValid ? palette.green : palette.pinkred"
     />
 
-    <Button :disabled="!isValid" @click="handleBtnClick">이메일 인증</Button>
+    <Button :disabled="!isValid" @click="handleBtnClick">{{ btnText }}</Button>
   </div>
 </template>
 
@@ -20,44 +20,55 @@ import Input from "@/components/common/input/Input.vue";
 import Button from "@/components/common/button/Button.vue";
 import { palette } from "@/constants/color";
 import {
-  EMAIL_PLACEHOLDER,
-  EMAIL_MESSAGE,
-  EMAIL_FORMAT_ERROR_MESSAGE,
-  EMAIL_FORMAT_SUCCESS_MESSAGE,
-  EMAIL_DUPLICATE_ERROR_MESSAGE,
+  PLACEHOLDER,
+  MESSAGE,
+  DUPLICATE_ERROR_MESSAGE,
+  FORMAT_ERROR_MESSAGE,
+  FORMAT_SUCCESS_MESSAGE,
+  DUPLICATE_SUCCESS_MESSAGE,
+  FIELD,
 } from "@/constants/ui";
 import { checkEmail } from "@/utils/validator";
-import { BASE_URL, HTTP_STATUS_CODE } from "@/constants/api";
+import { HTTP_STATUS_CODE } from "@/constants/api";
 import { getEmailDuplicate } from "@/apis/signup/getEmailDuplicate";
 import { isAxiosError } from "axios";
 import { useSignupStore } from "@/stores/signup";
 
-const email = ref(EMAIL_MESSAGE);
-const message = ref();
-const isValid = ref(false);
-import { storeToRefs } from "pinia";
-const store = useSignupStore();
+const props = defineProps({
+  title: String,
+  btnText: String,
+  next: String,
+  field: String,
+});
 
+const inputData = ref();
+const message = ref(MESSAGE[props.field]);
+const isValid = ref(false);
+const store = useSignupStore();
 const handleInput = (e) => {
-  email.value = e.target.value;
-  if (checkEmail(email.value)) {
+  inputData.value = e.target.value;
+  //여기 추상화
+  //input 변화가 있을때마다 format관련 체크
+  if (checkEmail(inputData.value)) {
     isValid.value = true;
-    message.value = EMAIL_FORMAT_SUCCESS_MESSAGE;
+    message.value = FORMAT_SUCCESS_MESSAGE[props.field];
   } else {
     isValid.value = false;
-    message.value = EMAIL_FORMAT_ERROR_MESSAGE;
+    message.value = FORMAT_ERROR_MESSAGE[props.field];
   }
 };
 
 const handleBtnClick = async () => {
   try {
-    const status = await getEmailDuplicate(email.value);
-    console.log(status === HTTP_STATUS_CODE.SUCCESS);
+    //여기 추상화
+    const status = await getEmailDuplicate(inputData.value);
     if (status === HTTP_STATUS_CODE.SUCCESS) {
-      store.setUser("email", email.value);
-      store.setStep(STEP.EMAIL_AUTH);
+      store.setUser(props.field, inputData.value);
+      console.log(store.getUser());
+      store.setStep(props.next);
+      console.log(store.getStep());
     } else if (status === HTTP_STATUS_CODE.CONFLICT) {
-      message.value = EMAIL_DUPLICATE_ERROR_MESSAGE;
+      message.value = DUPLICATE_ERROR_MESSAGE[props.field];
       isValid.value = false;
     }
   } catch (error) {

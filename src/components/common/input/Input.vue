@@ -4,7 +4,7 @@
       <input :placeholder="placeholder" />
       <component v-if="icon" :is="icon" width="16" class="input-icon" />
     </Flex>
-    <p v-show="message" class="message" :style="{ color: 'color' }">
+    <p v-if="message" class="message" :style="{ color: color }">
       {{ message }}
     </p>
   </Flex>
@@ -35,7 +35,6 @@ input {
   padding-right: 40px;
   padding-top: var(--spacing-3);
   padding-bottom: var(--spacing-3);
-
   border-radius: var(--spacing-2);
 }
 
@@ -51,7 +50,7 @@ input::placeholder {
 .input-icon {
   position: absolute;
   top: 50%;
-  right: 16px;
+  right: var(--spacing-4);
   transform: translateY(-50%);
 }
 
