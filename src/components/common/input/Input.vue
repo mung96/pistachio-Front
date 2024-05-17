@@ -1,10 +1,18 @@
 <template>
-  <Flex direction="column">
+  <Flex direction="column" gap="8px">
     <Flex position="relative">
-      <input :placeholder="placeholder" />
-      <component v-if="icon" :is="icon" width="16" class="input-icon" />
+      <input :placeholder="placeholder" :type="type" />
+      <component
+        v-if="icon"
+        :is="icon"
+        width="16"
+        class="input-icon"
+        @click="handleIconClick"
+      />
     </Flex>
-    <p v-show="message" class="message">{{ message }}</p>
+    <p v-if="message" class="message" :style="{ color: color }">
+      {{ message }}
+    </p>
   </Flex>
 </template>
 
@@ -14,8 +22,16 @@ import Flex from "@/design/Flex.vue";
 const props = defineProps({
   icon: Object,
   placeholder: String,
+  type: String,
   message: String,
+  color: String,
 });
+
+const emit = defineEmits(["iconClick"]);
+
+const handleIconClick = () => {
+  emit("iconClick");
+};
 </script>
 
 <style scoped>
@@ -32,7 +48,6 @@ input {
   padding-right: 40px;
   padding-top: var(--spacing-3);
   padding-bottom: var(--spacing-3);
-
   border-radius: var(--spacing-2);
 }
 
@@ -48,7 +63,15 @@ input::placeholder {
 .input-icon {
   position: absolute;
   top: 50%;
-  right: 16px;
+  right: var(--spacing-4);
   transform: translateY(-50%);
+}
+
+.error {
+  color: var(--pinkred-color);
+}
+
+.success {
+  color: var(--pinkred-green);
 }
 </style>

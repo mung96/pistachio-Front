@@ -7,8 +7,8 @@ import MyPage from "@/pages/mypage/Mypage.vue";
 import MyLikePage from "@/pages/mypage/MyLikePage.vue";
 import MyPostPage from "@/pages/mypage/MyPostPage.vue";
 import MyDonationPage from "@/pages/mypage/MyDonationPage.vue";
-import LoginPage from "@/pages/auth/LoginPage.vue";
-import SignupPage from "@/pages/auth/SignupPage.vue";
+import LoginPage from "@/pages/login/LoginPage.vue";
+import SignupPage from "@/pages/signup/SignupPage.vue";
 
 import { PATH, NAME } from "@/constants/router";
 
