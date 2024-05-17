@@ -67,7 +67,7 @@ const props = defineProps({
   next: String,
   field: String,
 });
-
+const emit = defineEmits(["modalOpen"]);
 const inputData = ref();
 const message = ref(MESSAGE[props.field]);
 const isValid = ref(false);
@@ -119,15 +119,20 @@ const handleBtnClick = async () => {
   try {
     store.setUser(props.field, inputData.value);
     const status = await store.checkValidate(props.field, inputData.value);
-    console.log(status);
+    //기타 로직 성공
     if (status === HTTP_STATUS_CODE.SUCCESS) {
       store.setUser(props.field, inputData.value);
       store.setStep(props.next);
-    } else if (status === HTTP_STATUS_CODE.CREATED) {
-      // TODO: 로그인 창으로 이동
-      alert("회원가입을 축하합니다.");
+      return;
+    }
+    //회원가입성공
+    if (status === HTTP_STATUS_CODE.CREATED) {
+      // TODO: 모달을 띄우고 로그인하러가기 누르면 로그인 페이지로 이동
+      emit("modalOpen");
+      return;
     }
   } catch (error) {
+    console.log(error);
     const status = error.response.status;
     if (status === HTTP_STATUS_CODE.CONFLICT) {
       message.value = DUPLICATE_ERROR_MESSAGE[props.field];

@@ -1,5 +1,6 @@
 <template>
   <main>
+    <SignupCompleteModal v-if="isModalOpen" />
     <Auth
       v-if="step === FIELD.EMAIL"
       :field="FIELD.EMAIL"
@@ -27,6 +28,7 @@
       title="비밀번호"
       btnText="가입하기"
       :next="FIELD.EMAIL"
+      @modal-open="handleModalOpen"
     />
   </main>
 </template>
@@ -38,6 +40,12 @@ import Auth from "@/components/signup/Auth.vue";
 import { FIELD } from "@/constants/ui";
 const store = useSignupStore();
 const { user, step } = storeToRefs(store);
+const isModalOpen = ref(false);
+import SignupCompleteModal from "@/modals/SignupCompleteModal.vue";
+import { ref } from "vue";
+const handleModalOpen = () => {
+  isModalOpen.value = true;
+};
 </script>
 
 <style>
