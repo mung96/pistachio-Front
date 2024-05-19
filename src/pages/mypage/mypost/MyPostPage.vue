@@ -11,7 +11,7 @@
 
 <script setup>
 import Title from "@/components/common/title/Title.vue";
-import PostItem from "@/components/mypage/mypost/PostItem.vue";
+import PostItem from "@/components/mypage/common/PostItem.vue";
 import Flex from "@/design/Flex.vue";
 </script>
 
