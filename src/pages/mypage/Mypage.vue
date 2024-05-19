@@ -1,7 +1,22 @@
 <template>
-  <div>마이페이지</div>
+  <main>
+    <Flex direction="column" gap="12px">
+      <h2>닉네임</h2>
+      <Profile />
+      <Category />
+    </Flex>
+  </main>
 </template>
 
-<script setup></script>
+<script setup>
+import Profile from "@/components/mypage/Profile.vue";
+import Category from "@/components/mypage/Category.vue";
+import Flex from "@/design/Flex.vue";
+</script>
 
-<style></style>
+<style scoped>
+h2 {
+  font: var(--xl-pre-font);
+  font-weight: 700;
+}
+</style>
