@@ -1,8 +1,12 @@
 <template>
-  <Flex class="item-container" justify="space-between">
+  <Flex
+    @click="handleCategoryClick"
+    class="item-container"
+    justify="space-between"
+  >
     <Flex gap="12px">
-      <component :is="icon" width="24px" height="24px" />
-      <p><slot></slot></p>
+      <component :is="category.icon" width="24px" height="24px" />
+      <p>{{ category.name }}</p>
     </Flex>
     <ArrowRightIcon width="24px" height="24px" />
   </Flex>
@@ -11,9 +15,17 @@
 <script setup>
 import Flex from "@/design/Flex.vue";
 import ArrowRightIcon from "@/assets/svg/arrowRightIcon.svg";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const props = defineProps({
-  icon: Object,
+  category: Object,
 });
+
+const handleCategoryClick = () => {
+  props.category.name === "로그아웃"
+    ? console.log("로그아웃")
+    : router.push(props.category.path);
+};
 </script>
 
 <style scoped>

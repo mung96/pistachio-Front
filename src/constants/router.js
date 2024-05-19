@@ -11,6 +11,7 @@ export const PATH = {
   MY_DONATION: "/my-donation",
   MY_LIKE: "/my-like",
   MY_POST: "/my-post",
+  UPDATE_INFO: "/update-info",
 
   LOGIN: "/login",
   SIGNUP: "/signup",
@@ -25,6 +26,7 @@ export const NAME = {
   MY_DONATION: "my-donation",
   MY_LIKE: "my-like",
   MY_POST: "my-post",
+  UPDATE_INFO: "update-info",
 
   LOGIN: "login",
   SIGNUP: "signup",
@@ -45,6 +47,7 @@ export const TOP_BAR_TYPE = {
   MY_DONATION: TOP_BAR_CONTENT.BACK,
   MY_LIKE: TOP_BAR_CONTENT.BACK,
   MY_POST: TOP_BAR_CONTENT.BACK,
+  UPDATE_INFO: TOP_BAR_CONTENT.BACK,
 
   LOGIN: TOP_BAR_CONTENT.BACK,
   SIGNUP: TOP_BAR_CONTENT.BACK,

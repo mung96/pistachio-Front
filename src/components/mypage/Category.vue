@@ -2,10 +2,9 @@
   <Flex class="container" gap="12px" align="center" direction="column">
     <CategoryItem
       v-for="category in CATEGORIES"
-      :icon="category.icon"
+      :category="category"
       :key="category"
-      >{{ category.name }}</CategoryItem
-    >
+    />
   </Flex>
 </template>
 
