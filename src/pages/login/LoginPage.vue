@@ -38,13 +38,16 @@ import Button from "@/components/common/button/Button.vue";
 import { ref } from "vue";
 
 import { HTTP_STATUS_CODE } from "@/constants/api";
+import { postLogin } from "@/apis/login/postLogin";
 import VisibleIcon from "@/assets/svg/visibleIcon.svg";
 import InVisibleIcon from "@/assets/svg/inVisibleIcon.svg";
 
 const user = ref({ email: "", password: "" });
 const isValid = ref(true);
 const isPwdVisible = ref(false);
-
+import { useRouter } from "vue-router";
+import { PATH } from "@/constants/router";
+const router = useRouter();
 const handlePwdIconClick = () => {
   isPwdVisible.value = !isPwdVisible.value;
 };
@@ -55,38 +58,29 @@ const handleEmailInput = (e) => {
 const handlePwdInput = (e) => {
   user.value.password = e.target.value;
 };
-const handleLoginBtnClick = () => {
-  //로그인 api요청
-  //성공하면 세션 저장
-  //이후 피드페이지로 이동
-};
-const handleSignupBtnClick = () => {};
-const handleBtnClick = async () => {
+const handleLoginBtnClick = async () => {
   try {
-    store.setUser(props.field, inputData.value);
-    const status = await store.checkValidate(props.field, inputData.value);
-    //기타 로직 성공
-    if (status === HTTP_STATUS_CODE.SUCCESS) {
-      store.setUser(props.field, inputData.value);
-      store.setStep(props.next);
-      return;
-    }
-    //회원가입성공
-    if (status === HTTP_STATUS_CODE.CREATED) {
-      // TODO: 모달을 띄우고 로그인하러가기 누르면 로그인 페이지로 이동
-      emit("modalOpen");
-      return;
+    //로그인 api요청
+    const response = postLogin(user.value);
+    console.log(response);
+    if (response.status === HTTP_STATUS_CODE.SUCCESS) {
+      //성공하면 세션 저장
+
+      //이후 피드페이지로 이동
+      router.push(PATH.FEED);
     }
   } catch (error) {
     console.log(error);
     const status = error.response.status;
-    if (status === HTTP_STATUS_CODE.CONFLICT) {
-      message.value = DUPLICATE_ERROR_MESSAGE[props.field];
+    if (status === HTTP_STATUS_CODE.BAD_REQUEST) {
       isValid.value = false;
     } else {
       console.log("서버이슈");
     }
   }
+};
+const handleSignupBtnClick = () => {
+  router.push(PATH.SIGNUP);
 };
 </script>
 

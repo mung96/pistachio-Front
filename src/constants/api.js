@@ -1,7 +1,7 @@
 export const BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 export const END_POINTS = {
-  LOGIN: "/user",
+  LOGIN: "/user/login",
   SIGNUP: "/user",
   DUPLICATE_USERNAME: (username) => `/user/validate/names/${username}/exists`,
   DUPLICATE_EMAIL: (email) => `/user/validate/emails/${email}/exists`,
