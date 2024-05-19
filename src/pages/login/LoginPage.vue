@@ -62,7 +62,7 @@ const handleLoginBtnClick = async () => {
   try {
     //로그인 api요청
     const response = postLogin(user.value);
-    console.log(response);
+    console.log(response.data);
     if (response.status === HTTP_STATUS_CODE.SUCCESS) {
       //성공하면 세션 저장
 

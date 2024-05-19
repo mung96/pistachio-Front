@@ -30,26 +30,39 @@
 import Flex from "@/design/Flex.vue";
 import { ref } from "vue";
 import { POST_IMAGE_MAX } from "@/constants/ui";
+import { usePostStore } from "@/stores/post";
+const message = ref("");
+const store = usePostStore();
 
 const previews = ref([]);
 const postImg = ref(null);
 let id = 0;
+
 const handleFileChange = (e) => {
   const reader = new FileReader();
   reader.readAsDataURL(e.target.files[0]);
+  store.setImages([...store.getImages(), e.target.files[0]]);
+
   reader.onload = () => {
     const data = reader.result;
     previews.value = [...previews.value, { id: id++, data: data }];
     e.target.value = "";
   };
-  console.log(postImg.value);
-  postImg.value.scrollLeft = postImg.value.scrollWidth;
+
+  console.log(store.getImages());
 };
 
 const handleDeleteImageBtn = (targetId) => {
   previews.value = previews.value.filter((preview) => {
     if (preview.id !== targetId) return preview;
   });
+  store.setImages(
+    previews.value.filter((preview) => {
+      if (preview.id !== targetId) return preview.data;
+    })
+  );
+
+  console.log(store.getImages());
 };
 </script>
 
