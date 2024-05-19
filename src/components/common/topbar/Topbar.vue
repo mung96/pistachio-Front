@@ -19,7 +19,12 @@
       <div v-else></div>
 
       <component v-if="typeof type.right === 'object'" :is="type.right" />
-      <p v-else-if="typeof type.right === 'string'">{{ type.right }}</p>
+      <p
+        @click="handleCreatePostBtn"
+        v-else-if="typeof type.right === 'string'"
+      >
+        {{ type.right }}
+      </p>
       <div v-else></div>
     </Flex>
   </header>
@@ -31,6 +36,8 @@ import Flex from "@/design/Flex.vue";
 import { ref, computed } from "vue";
 import { PATH, TOP_BAR_TYPE } from "@/constants/router";
 import { useRoute } from "vue-router";
+import { usePostStore } from "@/stores/post";
+import { postFeed } from "@/apis/feed/postFeed";
 
 const props = defineProps({
   type: Object,
@@ -38,6 +45,16 @@ const props = defineProps({
   center: Object | String,
   right: Object | String,
 });
+
+const postStore = usePostStore();
+
+const handleCreatePostBtn = async () => {
+  const response = await postFeed();
+  console.log(response);
+  postStore.setImages([]);
+  postStore.setContent("");
+  console.log("등록");
+};
 
 const route = useRoute();
 

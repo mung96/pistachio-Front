@@ -11,11 +11,12 @@
 <script setup>
 import { ref } from "vue";
 import { POST_CONTENT_LENGTH } from "@/constants/ui";
+import { usePostStore } from "@/stores/post";
 const message = ref("");
+const store = usePostStore();
 
 const handleKeyDown = (e) => {
-  message.value = e.target.value;
-  console.log(message.value);
+  store.setContent(e.target.value);
 };
 </script>
 
