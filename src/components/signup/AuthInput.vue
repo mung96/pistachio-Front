@@ -41,7 +41,7 @@
 
 <script setup>
 import { ref } from "vue";
-import Title from "@/components/signup/Title.vue";
+import Title from "@/components/common/title/Title.vue";
 import Input from "@/components/common/input/Input.vue";
 import Button from "@/components/common/button/Button.vue";
 import { palette } from "@/constants/color";

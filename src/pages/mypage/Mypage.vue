@@ -1,7 +1,7 @@
 <template>
   <main>
     <Flex direction="column" gap="12px">
-      <h2>닉네임</h2>
+      <Title>닉네임</Title>
       <Profile />
       <Category />
     </Flex>
@@ -12,6 +12,7 @@
 import Profile from "@/components/mypage/Profile.vue";
 import Category from "@/components/mypage/Category.vue";
 import Flex from "@/design/Flex.vue";
+import Title from "@/components/common/title/Title.vue";
 </script>
 
 <style scoped>

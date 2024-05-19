@@ -4,12 +4,12 @@ import FeedPage from "@/pages/feed/FeedPage.vue";
 import SearchPage from "@/pages/search/SearchPage.vue";
 import PostPage from "@/pages/post/PostPage.vue";
 import MyPage from "@/pages/mypage/Mypage.vue";
-import MyLikePage from "@/pages/mypage/MyLikePage.vue";
-import MyPostPage from "@/pages/mypage/MyPostPage.vue";
-import MyDonationPage from "@/pages/mypage/MyDonationPage.vue";
+import MyLikePage from "@/pages/mypage/mylike/MyLikePage.vue";
+import MyPostPage from "@/pages/mypage/mypost/MyPostPage.vue";
+import MyDonationPage from "@/pages/mypage/mydonation/MyDonationPage.vue";
 import LoginPage from "@/pages/login/LoginPage.vue";
 import SignupPage from "@/pages/signup/SignupPage.vue";
-import UpdateInfoPage from "@/pages/mypage/UpdateInfoPage.vue";
+import UpdateInfoPage from "@/pages/mypage/updateinfo/UpdateInfoPage.vue";
 
 import { PATH, NAME } from "@/constants/router";
 
