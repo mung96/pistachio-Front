@@ -1,14 +1,6 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import { FIELD } from "@/constants/ui";
-import {
-  checkEmail,
-  checkUsername,
-  checkPwd,
-  checkPwdConfirm,
-} from "@/utils/validator";
-import { getEmailDuplicate } from "@/apis/signup/getEmailDuplicate";
-import { getUsernameDuplicate } from "@/apis/signup/getUsernameDuplicate";
+
 export const usePostStore = defineStore("post", () => {
   const content = ref("");
   const images = ref([]);

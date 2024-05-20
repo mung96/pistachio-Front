@@ -6,11 +6,11 @@ import Topbar from "./components/common/topbar/Topbar.vue";
 
 <template>
   <div>
-    <Topbar />
+    <!-- <Topbar /> -->
     <div class="layout">
       <RouterView />
     </div>
-    <Navbar />
+    <!-- <Navbar /> -->
   </div>
 </template>
 

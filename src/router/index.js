@@ -10,6 +10,7 @@ import MyDonationPage from "@/pages/mypage/mydonation/MyDonationPage.vue";
 import LoginPage from "@/pages/login/LoginPage.vue";
 import SignupPage from "@/pages/signup/SignupPage.vue";
 import UpdateInfoPage from "@/pages/mypage/updateinfo/UpdateInfoPage.vue";
+import ProjectPage from "@/pages/mypage/mydonation/ProjectPage.vue";
 
 import { PATH, NAME } from "@/constants/router";
 
@@ -32,6 +33,12 @@ const router = createRouter({
     // 마이페이지
     { path: PATH.MY_PAGE, name: NAME.MY_PAGE, component: MyPage },
     { path: PATH.MY_DONATION, name: NAME.DONATION, component: MyDonationPage },
+    {
+      path: PATH.MY_DONATION_PROJECT(":projectId"),
+      name: NAME.MY_DONATION_PROJECT,
+      component: ProjectPage,
+      props: true,
+    },
     { path: PATH.MY_LIKE, name: NAME.MY_LIKE, component: MyLikePage },
     { path: PATH.MY_POST, name: NAME.MY_POST, component: MyPostPage },
     {

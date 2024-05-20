@@ -9,6 +9,7 @@ export const PATH = {
 
   MY_PAGE: "/my-page",
   MY_DONATION: "/my-donation",
+  MY_DONATION_PROJECT: (projectId) => `/my-donation/project/${projectId}`,
   MY_LIKE: "/my-like",
   MY_POST: "/my-post",
   UPDATE_INFO: "/update-info",
@@ -24,6 +25,7 @@ export const NAME = {
 
   MY_PAGE: "my-page",
   MY_DONATION: "my-donation",
+  MY_DONATION_PROJECT: "my-donation-project",
   MY_LIKE: "my-like",
   MY_POST: "my-post",
   UPDATE_INFO: "update-info",
@@ -45,6 +47,7 @@ export const TOP_BAR_TYPE = {
 
   MY_PAGE: TOP_BAR_CONTENT.MAIN,
   MY_DONATION: TOP_BAR_CONTENT.BACK,
+  MY_DONATION_PROJECT: TOP_BAR_CONTENT.BACK,
   MY_LIKE: TOP_BAR_CONTENT.BACK,
   MY_POST: TOP_BAR_CONTENT.BACK,
   UPDATE_INFO: TOP_BAR_CONTENT.BACK,

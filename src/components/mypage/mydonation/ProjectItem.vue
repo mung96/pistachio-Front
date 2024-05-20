@@ -1,10 +1,15 @@
 <template>
-  <Flex class="item-container" align="center" justify="space-between">
+  <Flex
+    @click="handleProjectClick"
+    class="item-container"
+    align="center"
+    justify="space-between"
+  >
     <Flex gap="12px" align="center">
-      <img src="" alt="프로젝트사진" />
+      <img :src="props.project.images[0]" alt="프로젝트사진" />
       <Flex direction="column" align="center">
-        <span>프로젝트 이름</span>
-        <span>설명설명</span>
+        <span>{{ project.name }}</span>
+        <span>{{ project.desc }}</span>
       </Flex>
     </Flex>
     <span>상세보기</span>
@@ -12,7 +17,19 @@
 </template>
 
 <script setup>
+import { PATH } from "@/constants/router";
 import Flex from "@/design/Flex.vue";
+import { RouterLink, useRouter } from "vue-router";
+import { useMypageStore } from "@/stores/mypage";
+const router = useRouter();
+const props = defineProps({
+  project: Object,
+});
+const store = useMypageStore();
+const handleProjectClick = () => {
+  store.setProject(props.project);
+  router.push(PATH.MY_DONATION_PROJECT(props.project.projectId));
+};
 </script>
 
 <style scoped>
