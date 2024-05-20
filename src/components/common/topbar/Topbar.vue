@@ -60,9 +60,6 @@ const route = useRoute();
 // route에 따라 렌더링 로직 다시짜야할듯
 const type = computed(() => {
   const key = Object.keys(PATH).findIndex((key) => PATH[key] === route.path);
-  console.log(key);
-  console.log(PATH[key]);
-  console.log(route.path);
   return TOP_BAR_TYPE[Object.keys(PATH)[key]];
 });
 

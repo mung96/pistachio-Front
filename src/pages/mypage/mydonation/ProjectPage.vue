@@ -2,21 +2,21 @@
   <div>
     <main>
       <Flex direction="column" gap="12px">
-        <Title>{{ project.name }}</Title>
+        <Title>{{ post.name }}</Title>
         <Flex direction="column" gap="8px">
-          <img class="images" :src="project.images[0]" alt="main사진" />
+          <img class="images" :src="post.images[0]" alt="main사진" />
           <p>
-            <span class="num">{{ project.people }} 명</span>
+            <span class="num">{{ post.people }} 명</span>
             <span class="text"> 참여중</span>
           </p>
           <p>
-            <span class="num">{{ project.money }} 원</span>
+            <span class="num">{{ post.money }} 원</span>
             <span class="text"> 달성</span>
           </p>
-          <p class="desc">{{ project.desc }}</p>
+          <p class="desc">{{ post.desc }}</p>
           <Flex />
           <img
-            v-for="image in project.images.slice(1)"
+            v-for="image in post.images.slice(1)"
             :key="image"
             :src="image"
             alt="서브 사진들"
@@ -37,7 +37,7 @@ import DonationBar from "@/components/mypage/mydonation/DonationBar.vue";
 import { useMypageStore } from "@/stores/mypage";
 
 const store = useMypageStore();
-const project = store.getProject();
+const post = store.getPost();
 </script>
 
 <style scoped>
