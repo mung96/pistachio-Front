@@ -26,6 +26,8 @@ const props = defineProps({
 
 const activeIndex = ref(0);
 
+//더블클릭하면 좋아요
+
 const handleCarouselMinus = () => {
   activeIndex.value =
     (activeIndex.value - 1 + props.pictures.length) % props.pictures.length;
