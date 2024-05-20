@@ -1,5 +1,5 @@
 import { END_POINTS } from "@/constants/api";
-import { axiosAuthInstance } from "../axiosInstance";
+import { axiosInstance } from "../axiosInstance";
 import { usePostStore } from "@/stores/post";
 
 export const postFeed = async () => {
@@ -8,7 +8,7 @@ export const postFeed = async () => {
   store.getImages().map((image) => formData.append("images", image));
   console.log(formData);
 
-  const response = await axiosAuthInstance.post(
+  const response = await axiosInstance.post(
     END_POINTS.FEED,
     {
       content: store.getContent(),

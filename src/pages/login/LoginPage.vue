@@ -61,18 +61,20 @@ const handlePwdInput = (e) => {
 const handleLoginBtnClick = async () => {
   try {
     //로그인 api요청
-    const response = postLogin(user.value);
-    console.log(response.data);
+    const response = await postLogin(user.value);
+    console.log(response);
+    console.log(response.status);
     if (response.status === HTTP_STATUS_CODE.SUCCESS) {
-      //성공하면 세션 저장
-
       //이후 피드페이지로 이동
       router.push(PATH.FEED);
     }
   } catch (error) {
     console.log(error);
     const status = error.response.status;
-    if (status === HTTP_STATUS_CODE.BAD_REQUEST) {
+    if (
+      status === HTTP_STATUS_CODE.BAD_REQUEST ||
+      status === HTTP_STATUS_CODE.UNAUTHORIZED
+    ) {
       isValid.value = false;
     } else {
       console.log("서버이슈");
