@@ -1,6 +1,5 @@
 <template>
   <main>
-    <Title>내가 작성한 글</Title>
     <Feed :feed="post" />
   </main>
 </template>

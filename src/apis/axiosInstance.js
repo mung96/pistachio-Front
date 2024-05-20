@@ -11,8 +11,3 @@ export const axiosInstance = axios.create({
   },
   withCredentials: true, //요청에 쿠키담기
 });
-
-export const axiosAuthInstance = axios.create({
-  baseURL: BASE_URL,
-  //세션 포함
-});

@@ -1,4 +1,5 @@
 export const BASE_URL = import.meta.env.VITE_APP_API_URL;
+export const AWS_BUCKET_URL = import.meta.env.VITE_APP_AWS_BUCKET_URL;
 
 export const END_POINTS = {
   LOGIN: "/user/login",

@@ -2,16 +2,16 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 
 export const useMypageStore = defineStore("post", () => {
-  const project = ref({});
+  // const project = ref({});
   const post = ref({});
 
-  const setProject = (newProject) => {
-    project.value = newProject;
-  };
+  // const setProject = (newProject) => {
+  //   project.value = newProject;
+  // };
 
-  const getProject = () => {
-    return project.value;
-  };
+  // const getProject = () => {
+  //   return project.value;
+  // };
   const setPost = (newPost) => {
     post.value = newPost;
   };
@@ -19,5 +19,6 @@ export const useMypageStore = defineStore("post", () => {
   const getPost = () => {
     return post.value;
   };
-  return { project, setProject, getProject, post, setPost, getPost };
+  // return { project, setProject, getProject, post, setPost, getPost };
+  return { post, setPost, getPost };
 });

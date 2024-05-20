@@ -11,9 +11,9 @@
     <p class="like-cnt">
       {{ isLike ? content.likeCnt-- : content.likeCnt++ }} LIKES
     </p>
-    <p class="title">{{ content.title }}</p>
+    <!-- <p class="title">{{ feed.content }}</p> -->
     <Flex align="center" gap="8px">
-      <p class="body">{{ content.body }}</p>
+      <p class="body">{{ feed.content }}</p>
       <p class="more">...더보기</p>
     </Flex>
     <p class="see-comment">댓글 모두 보기</p>
@@ -27,8 +27,10 @@ import HeartIcon from "@/assets/svg/heartIcon.svg";
 import { ref } from "vue";
 
 const props = defineProps({
-  content: Object,
+  feed: Object,
 });
+
+const { feed, content } = props.feed;
 
 const isLike = ref(true);
 

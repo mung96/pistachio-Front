@@ -2,7 +2,7 @@
   <main>
     <!-- <SignupCompleteModal /> -->
     <Flex direction="column" gap="16px">
-      <Feed v-for="feed in response" :feed="feed" :key="feed" />
+      <Feed v-for="feed in feeds" :feed="feed" :key="feed" />
     </Flex>
   </main>
 </template>
@@ -13,11 +13,17 @@ import Flex from "@/design/Flex.vue";
 import { ref, onMounted } from "vue";
 import { response } from "@/dummy/feed";
 import SignupCompleteModal from "@/modals/SignupCompleteModal.vue";
-
+import { getFeeds } from "@/apis/feed/getFeeds";
 const feeds = ref([]);
-feeds.value = response;
-onMounted(() => {
-  //API 요청
+
+onMounted(async () => {
+  try {
+    const response = await getFeeds();
+    feeds.value = response.data;
+    console.log(feeds.value);
+  } catch (error) {
+    console.log(error);
+  }
 });
 </script>
 
