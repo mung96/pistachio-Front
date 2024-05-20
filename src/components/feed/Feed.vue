@@ -13,10 +13,10 @@ import FeedProfile from "./FeedProfile.vue";
 import FeedContent from "./FeedContent.vue";
 import FeedImages from "./FeedImages.vue";
 import Flex from "@/design/Flex.vue";
-
 const props = defineProps({
   feed: Object,
 });
+console.log(props.feed);
 </script>
 
 <style scoped></style>

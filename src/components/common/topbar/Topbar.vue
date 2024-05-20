@@ -40,7 +40,6 @@ import { usePostStore } from "@/stores/post";
 import { postFeed } from "@/apis/feed/postFeed";
 
 const props = defineProps({
-  type: Object,
   left: Object | String,
   center: Object | String,
   right: Object | String,
