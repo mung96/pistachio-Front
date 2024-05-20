@@ -9,11 +9,12 @@
       </div>
     </Flex>
     <p class="like-cnt">
-      {{ isLike ? content.likeCnt-- : content.likeCnt++ }} LIKES
+      <!-- {{ isLike ? feed.feed.likeCnt : feed.feed.likeCnt }} LIKES -->
+      {{ like }} LIKES
     </p>
     <!-- <p class="title">{{ feed.content }}</p> -->
     <Flex align="center" gap="8px">
-      <p class="body">{{ feed.content }}</p>
+      <p class="body">{{ feed.feed.content }}</p>
       <p class="more">...더보기</p>
     </Flex>
     <p class="see-comment">댓글 모두 보기</p>
@@ -30,11 +31,17 @@ const props = defineProps({
   feed: Object,
 });
 
-const { feed, content } = props.feed;
+const isLike = ref(false); //응답에서 isLike 긁어오기
+const like = ref(props.feed.feed.likeCnt);
 
-const isLike = ref(true);
+//unmounted되는 순간 좋아요상태랑 좋아요수 댓글을 보낸다.
 
 const handleClickHeart = () => {
+  if (isLike.value) {
+    like.value--;
+  } else {
+    like.value++;
+  }
   isLike.value = !isLike.value;
   console.log(1);
 };

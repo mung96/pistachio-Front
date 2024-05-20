@@ -3,7 +3,7 @@
     <Flex gap="8px" direction="column">
       <!-- <FeedProfile :profile="props.user" /> -->
       <FeedPictures :pictures="props.feed.feedPictures" />
-      <!-- <FeedContent :feed="props.feed" /> -->
+      <FeedContent :feed="props.feed" />
     </Flex>
   </section>
 </template>

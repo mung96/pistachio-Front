@@ -1,7 +1,7 @@
 <template>
   <main>
     <!-- <SignupCompleteModal /> -->
-    <Flex direction="column" gap="16px">
+    <Flex direction="column" gap="32px">
       <Feed v-for="feed in feeds" :feed="feed" :key="feed" />
     </Flex>
   </main>
