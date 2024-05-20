@@ -1,24 +1,14 @@
 <template>
   <main>
-    <Flex direction="column" gap="12px">
-      <Title>좋아요 누른 글</Title>
-      <div class="grid-container">
-        <PostItem v-for="i in 100" :key="i" />
-      </div>
-    </Flex>
+    <Title>내가 좋아요 누른 글</Title>
+    <PostItem v-for="project in projects" :key="project.id" :post="post" />
   </main>
 </template>
 
 <script setup>
 import Title from "@/components/common/title/Title.vue";
-import PostItem from "@/components/mypage/common/PostItem.vue";
-import Flex from "@/design/Flex.vue";
+import ProjectItem from "@/components/mypage/mydonation/ProjectItem.vue";
+import { projects } from "@/dummy/mypage";
 </script>
 
-<style scoped>
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, fit-content(400px));
-  gap: 12px;
-}
-</style>
+<style></style>

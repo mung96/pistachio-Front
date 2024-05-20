@@ -10,7 +10,7 @@ import Topbar from "./components/common/topbar/Topbar.vue";
     <div class="layout">
       <RouterView />
     </div>
-    <!-- <Navbar /> -->
+    <Navbar />
   </div>
 </template>
 

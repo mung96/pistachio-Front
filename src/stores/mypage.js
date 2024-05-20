@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 
 export const useMypageStore = defineStore("post", () => {
   const project = ref({});
+  const post = ref({});
 
   const setProject = (newProject) => {
     project.value = newProject;
