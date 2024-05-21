@@ -3,10 +3,7 @@
     <Flex direction="column" gap="24px">
       <ImageUpload />
       <PostContent />
-      <Flex direction="column" gap="16px" padding-left="16px">
-        <Tag :color="palette.sub" text="인증글" />
-        <Tag :color="palette.main" text="프로젝트이름" />
-      </Flex>
+      <PostTag />
     </Flex>
   </form>
 </template>
@@ -14,8 +11,16 @@
 import ImageUpload from "@/components/post/ImageUpload.vue";
 import PostContent from "@/components/post/PostContent.vue";
 import Flex from "@/design/Flex.vue";
+import PostTag from "@/components/post/PostTag.vue";
 import Tag from "@/components/post/Tag.vue";
 import { palette } from "@/constants/color";
+import TagInput from "@/components/post/TagInput.vue";
+import { usePostStore } from "@/stores/post";
+import { useUserStore } from "@/stores/user";
+import { ref } from "vue";
+
+const postStore = usePostStore();
+const userStore = useUserStore();
 </script>
 
 <style scoped></style>

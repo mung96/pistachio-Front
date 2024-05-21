@@ -18,8 +18,6 @@ import SignupPage from "@/pages/signup/SignupPage.vue";
 import UpdatePasswordPage from "@/pages/mypage/updatepassword/UpdatePasswordPage.vue";
 
 import FeedDetailPage from "@/pages/feed/FeedDetailPage.vue";
-import PostProjectPage from "@/pages/post/PostProjectPage.vue";
-
 import { PATH, NAME } from "@/constants/router";
 
 const router = createRouter({

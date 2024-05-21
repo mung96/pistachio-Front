@@ -12,6 +12,7 @@ const props = defineProps({
 <style scoped>
 div {
   width: fit-content;
+  min-height: 43px;
   border-radius: 12px;
   padding: 10px 20px;
   border: 2px solid;
