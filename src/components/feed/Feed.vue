@@ -1,7 +1,7 @@
 <template>
   <section>
     <Flex gap="8px" direction="column">
-      <!-- <FeedProfile :profile="props.user" /> -->
+      <FeedProfile :user="props.feed.userResponse" />
       <FeedPictures :pictures="props.feed.feedPictures" />
       <FeedContent :feed="props.feed" :type="type" />
     </Flex>
@@ -19,9 +19,6 @@ const props = defineProps({
   feed: Object,
   type: String,
 });
-
-onMounted(async () => {});
-// console.log(props.feed);
 </script>
 
 <style scoped></style>

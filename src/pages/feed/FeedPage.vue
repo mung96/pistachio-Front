@@ -1,6 +1,5 @@
 <template>
   <main>
-    <!-- <SignupCompleteModal /> -->
     <Flex direction="column" gap="32px">
       <Feed v-for="feed in feeds" :feed="feed" :key="feed" />
     </Flex>
@@ -12,7 +11,6 @@ import Feed from "@/components/feed/Feed.vue";
 import Flex from "@/design/Flex.vue";
 import { ref, onMounted } from "vue";
 import { response } from "@/dummy/feed";
-import SignupCompleteModal from "@/modals/SignupCompleteModal.vue";
 import { getFeeds } from "@/apis/feed/getFeeds";
 const feeds = ref([]);
 
