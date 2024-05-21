@@ -34,9 +34,9 @@ import Title from "@/components/common/title/Title.vue";
 import Flex from "@/design/Flex.vue";
 import DonationBar from "@/components/mypage/mydonation/DonationBar.vue";
 
-import { useMypageStore } from "@/stores/mypage";
+import { useProjectStore } from "@/stores/project";
 
-const store = useMypageStore();
+const store = useProjectStore();
 const post = store.getPost();
 </script>
 

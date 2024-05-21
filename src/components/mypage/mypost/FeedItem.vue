@@ -20,12 +20,12 @@
 import { PATH } from "@/constants/router";
 import Flex from "@/design/Flex.vue";
 import { RouterLink, useRoute, useRouter } from "vue-router";
-import { useMypageStore } from "@/stores/mypage";
+import { useProjectStore } from "@/stores/project";
 import { imageURLParser } from "@/utils/imageURLParser";
 
 const router = useRouter();
 const route = useRoute();
-const myStore = useMypageStore();
+const myStore = useProjectStore();
 const props = defineProps({
   post: Object,
 });

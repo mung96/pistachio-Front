@@ -12,5 +12,5 @@ export const useProjectStore = defineStore("post", () => {
     return project.value;
   };
 
-  return { project, setProject, getProject, post, setPost, getPost };
+  return { project, setProject, getProject };
 });

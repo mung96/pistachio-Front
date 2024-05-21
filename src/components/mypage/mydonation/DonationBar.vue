@@ -23,9 +23,9 @@ import { computed, ref } from "vue";
 import Flex from "@/design/Flex.vue";
 import Button from "@/components/common/button/Button.vue";
 import HeartIcon from "@/assets/svg/heartIcon.svg";
-import { useMypageStore } from "@/stores/mypage";
+import { useProjectStore } from "@/stores/project";
 
-const store = useMypageStore();
+const store = useProjectStore();
 const project = store.getProject();
 const isLike = ref(project.isLike);
 
