@@ -19,7 +19,7 @@
 <script setup>
 import { PATH } from "@/constants/router";
 import Flex from "@/design/Flex.vue";
-import { RouterLink, useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useFeedStore } from "@/stores/feed";
 import { imageURLParser } from "@/utils/imageURLParser";
 
@@ -33,12 +33,7 @@ const props = defineProps({
 const handleItemClick = () => {
   console.log(props.feed.feed.id);
   store.setFeed(props.feed);
-
-  if (route.path === PATH.MY_LIKE) {
-    router.push(PATH.MY_LIKE_DETAIL(props.feed.feed.id));
-  } else if (route.path === PATH.MY_POST) {
-    router.push(PATH.FEED_DETAIL(props.feed.feed.id));
-  }
+  router.push(PATH.FEED_DETAIL(props.feed.feed.id));
 };
 </script>
 

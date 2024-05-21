@@ -5,7 +5,7 @@ import SearchPage from "@/pages/search/SearchPage.vue";
 import PostPage from "@/pages/post/PostPage.vue";
 import MyPage from "@/pages/mypage/Mypage.vue";
 import MyLikePage from "@/pages/mypage/mylike/MyLikePage.vue";
-import MyPostPage from "@/pages/mypage/mypost/MyPostPage.vue";
+import MyFeedPage from "@/pages/mypage/myfeed/MyFeedPage.vue";
 import MyDonationPage from "@/pages/mypage/mydonation/MyDonationPage.vue";
 import LoginPage from "@/pages/login/LoginPage.vue";
 import SignupPage from "@/pages/signup/SignupPage.vue";
@@ -41,7 +41,7 @@ const router = createRouter({
       component: ProjectPage,
       props: true,
     },
-    { path: PATH.MY_POST, name: NAME.MY_POST, component: MyPostPage },
+    { path: PATH.MY_POST, name: NAME.MY_POST, component: MyFeedPage },
     {
       path: PATH.FEED_DETAIL(":postId"),
       name: NAME.FEED_DETAIL,

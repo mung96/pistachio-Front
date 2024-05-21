@@ -10,9 +10,9 @@ export const PATH = {
   MY_PAGE: "/my-page",
   MY_DONATION: "/my-donation",
   MY_DONATION_PROJECT: (projectId) => `/my-donation/${projectId}`,
-  MY_LIKE: "/my-like",
+  MY_LIKE: "/my-feed/like",
   MY_LIKE_DETAIL: (postId) => `/my-like/${postId}`,
-  MY_POST: "/my-post",
+  MY_POST: "/my-feed/post",
   FEED_DETAIL: (postId) => `/feed/${postId}`,
   UPDATE_INFO: "/update-info",
 
