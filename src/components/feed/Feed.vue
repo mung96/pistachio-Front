@@ -3,7 +3,7 @@
     <Flex gap="8px" direction="column">
       <!-- <FeedProfile :profile="props.user" /> -->
       <FeedPictures :pictures="props.feed.feedPictures" />
-      <FeedContent :feed="props.feed" />
+      <FeedContent :feed="props.feed" :type="type" />
     </Flex>
   </section>
 </template>
@@ -17,6 +17,7 @@ import { onMounted, ref } from "vue";
 const user = ref({});
 const props = defineProps({
   feed: Object,
+  type: String,
 });
 
 onMounted(async () => {});

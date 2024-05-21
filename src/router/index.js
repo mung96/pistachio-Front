@@ -11,7 +11,7 @@ import LoginPage from "@/pages/login/LoginPage.vue";
 import SignupPage from "@/pages/signup/SignupPage.vue";
 import UpdateInfoPage from "@/pages/mypage/updateinfo/UpdateInfoPage.vue";
 import ProjectPage from "@/pages/mypage/mydonation/ProjectPage.vue";
-import FeedDetailPage from "@/pages/mypage/mypost/FeedDetailPage.vue";
+import FeedDetailPage from "@/pages/feed/FeedDetailPage.vue";
 import MyLikeDetailPage from "@/pages/mypage/mylike/MyLikeDetailPage.vue";
 
 import { PATH, NAME } from "@/constants/router";
