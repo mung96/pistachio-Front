@@ -15,7 +15,7 @@ import ProjectDetailPage from "@/pages/mypage/myproject/ProjectDetailPage.vue";
 
 import LoginPage from "@/pages/login/LoginPage.vue";
 import SignupPage from "@/pages/signup/SignupPage.vue";
-import UpdateInfoPage from "@/pages/mypage/updateinfo/UpdateInfoPage.vue";
+import UpdatePasswordPage from "@/pages/mypage/updatepassword/UpdatePasswordPage.vue";
 
 import FeedDetailPage from "@/pages/feed/FeedDetailPage.vue";
 
@@ -63,9 +63,9 @@ const router = createRouter({
     },
 
     {
-      path: PATH.UPDATE_INFO,
-      name: NAME.UPDATE_INFO,
-      component: UpdateInfoPage,
+      path: PATH.UPDATE_PASSWORD,
+      name: NAME.UPDATE_PASSWORD,
+      component: UpdatePasswordPage,
     },
 
     //auth 페이지
