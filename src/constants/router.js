@@ -13,7 +13,7 @@ export const PATH = {
   MY_LIKE: "/my-like",
   MY_LIKE_DETAIL: (postId) => `/my-like/${postId}`,
   MY_POST: "/my-post",
-  FEED_DETAIL: (postId) => `/my-post/${postId}`,
+  FEED_DETAIL: (postId) => `/feed/${postId}`,
   UPDATE_INFO: "/update-info",
 
   LOGIN: "/login",

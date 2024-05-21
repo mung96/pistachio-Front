@@ -8,8 +8,6 @@
 <script setup>
 import Title from "@/components/common/title/Title.vue";
 import PostItem from "@/components/mypage/common/PostItem.vue";
-import { POSTS } from "@/dummy/mypage";
-import { projects } from "@/dummy/mypage";
 import { onMounted, ref } from "vue";
 import { getFeeds } from "@/apis/feed/getFeeds";
 const posts = ref([]);
