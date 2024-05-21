@@ -4,7 +4,11 @@
       class="carousel"
       :style="{ transform: `translateX(-${activeIndex * 100}%)` }"
     >
-      <img v-for="(image, index) in props.images" :src="image" :key="index" />
+      <img
+        v-for="picture in props.pictures"
+        :src="imageURLParser(picture.url)"
+        :key="picture"
+      />
     </div>
     <button class="prev" @click="handleCarouselMinus">-넘기기</button>
     <button class="next" @click="handleCarouselPlus">+넘기기</button>
@@ -13,21 +17,24 @@
 
 <script setup>
 import Flex from "@/design/Flex.vue";
+import { imageURLParser } from "@/utils/imageURLParser";
 import { ref } from "vue";
 
 const props = defineProps({
-  images: Array,
+  pictures: Array,
 });
 
 const activeIndex = ref(0);
 
+//더블클릭하면 좋아요
+
 const handleCarouselMinus = () => {
   activeIndex.value =
-    (activeIndex.value - 1 + props.images.length) % props.images.length;
+    (activeIndex.value - 1 + props.pictures.length) % props.pictures.length;
 };
 
 const handleCarouselPlus = () => {
-  activeIndex.value = (activeIndex.value + 1) % props.images.length;
+  activeIndex.value = (activeIndex.value + 1) % props.pictures.length;
 };
 </script>
 

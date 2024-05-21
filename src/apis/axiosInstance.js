@@ -9,9 +9,5 @@ export const axiosInstance = axios.create({
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
   },
-});
-
-export const axiosAuthInstance = axios.create({
-  baseURL: BASE_URL,
-  //세션 포함
+  withCredentials: true, //요청에 쿠키담기
 });

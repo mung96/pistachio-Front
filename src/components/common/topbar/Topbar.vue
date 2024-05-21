@@ -38,7 +38,9 @@ import { PATH, TOP_BAR_TYPE } from "@/constants/router";
 import { useRoute } from "vue-router";
 import { usePostStore } from "@/stores/post";
 import { postFeed } from "@/apis/feed/postFeed";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const props = defineProps({
   left: Object | String,
   center: Object | String,
@@ -48,11 +50,14 @@ const props = defineProps({
 const postStore = usePostStore();
 
 const handleCreatePostBtn = async () => {
-  const response = await postFeed();
-  console.log(response);
-  postStore.setImages([]);
-  postStore.setContent("");
-  console.log("등록");
+  try {
+    const response = await postFeed();
+    postStore.setImages([]);
+    postStore.setContent("");
+    router.push(PATH.FEED);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const route = useRoute();
