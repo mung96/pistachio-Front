@@ -12,8 +12,9 @@
 import FeedProfile from "./FeedProfile.vue";
 import FeedContent from "./FeedContent.vue";
 import FeedPictures from "./FeedPictures.vue";
+import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
 import Flex from "@/design/Flex.vue";
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 const user = ref({});
 const props = defineProps({
   feed: Object,

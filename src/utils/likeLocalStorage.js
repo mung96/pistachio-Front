@@ -1,6 +1,6 @@
 import { jsonLocalStorage } from "./jsonLocalStorage";
 
-const KEY = "like";
+export const KEY = "like";
 export const likeLocalStorage = (feedId, isLike) => {
   const obj = jsonLocalStorage.getItem(KEY) || {};
   console.log(feedId);

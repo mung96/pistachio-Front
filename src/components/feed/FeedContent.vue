@@ -28,7 +28,7 @@
 import Flex from "@/design/Flex.vue";
 import MoneyIcon from "@/assets/svg/moneyIcon.svg";
 import HeartIcon from "@/assets/svg/heartIcon.svg";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { PATH } from "@/constants/router";
 import { useFeedStore } from "@/stores/feed";
 import { useRouter } from "vue-router";
@@ -42,7 +42,7 @@ const router = useRouter();
 
 const store = useFeedStore();
 
-const isLike = ref(props.feed.feed.isLike); //응답에서 isLike 긁어오기
+const isLike = ref(props.feed.userLike); //응답에서 isLike 긁어오기
 const like = ref(props.feed.feed.likeCnt);
 console.log(props.feed.userLike);
 const isSeeMore = ref(false);
