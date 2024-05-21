@@ -5,7 +5,7 @@
 
 <script setup>
 import FeedItem from "../mypost/FeedItem.vue";
-import ProjectItem from "../mydonation/ProjectItem.vue";
+import ProjectItem from "../myproject/ProjectItem.vue";
 const props = defineProps({
   type: String,
   post: Object,
