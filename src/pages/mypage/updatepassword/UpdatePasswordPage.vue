@@ -2,7 +2,7 @@
   <main>
     <Flex direction="column" gap="40px"
       ><Title>비밀번호 변경</Title>
-      <Flex direction="column" gap="20px" align="center">
+      <Flex direction="column" gap="20px">
         <Title>기존 비밀번호</Title>
         <Input
           @input="handlePwdInput"
@@ -53,9 +53,22 @@ import { HTTP_STATUS_CODE } from "@/constants/api";
 import { patchPassword } from "@/apis/mypage/patchPassword";
 import VisibleIcon from "@/assets/svg/visibleIcon.svg";
 import InVisibleIcon from "@/assets/svg/inVisibleIcon.svg";
+import { useRouter } from "vue-router";
+import { PATH } from "@/constants/router";
+import { checkPwd, checkPwdConfirm } from "@/utils/validator";
+import { palette } from "@/constants/color";
+import {
+  FORMAT_SUCCESS_MESSAGE,
+  FORMAT_ERROR_MESSAGE,
+  FIELD,
+} from "@/constants/ui";
 
 const user = ref({ password: "", newPassword: "", newPasswordConfirm: "" });
 const isValid = ref(true);
+
+const password = ref("");
+const newPassword = ref("");
+const newPasswordConfirm = ref("");
 
 const isPwdValid = ref(false);
 const isNewPwdValid = ref(false);
@@ -68,9 +81,6 @@ const isNewPwdConfirmVisible = ref(false);
 const newPwdMessage = ref("");
 const newPwdConfirmMessage = ref("");
 
-import { useRouter } from "vue-router";
-import { PATH } from "@/constants/router";
-import { checkPwd, checkPwdConfirm } from "@/utils/validator";
 const router = useRouter();
 
 //눈모양 아이콘 클릭
