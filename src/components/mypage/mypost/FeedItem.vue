@@ -1,15 +1,15 @@
 <template>
   <Flex
-    @click="handlePostClick"
+    @click="handleItemClick"
     class="item-container"
     align="center"
     justify="space-between"
   >
     <Flex gap="12px" align="center">
-      <img :src="imageURLParser(post.feedPictures[0].url)" alt="게시글 사진" />
+      <img :src="imageURLParser(feed.feedPictures[0].url)" alt="게시글 사진" />
       <Flex direction="column">
         <!-- <span>{{ post.name }}</span> -->
-        <span>{{ post.feed.content.slice(0, 20) }}</span>
+        <span>{{ feed.feed.content.slice(0, 20) }}</span>
       </Flex>
     </Flex>
     <span>상세보기</span>
@@ -19,27 +19,21 @@
 <script setup>
 import { PATH } from "@/constants/router";
 import Flex from "@/design/Flex.vue";
-import { RouterLink, useRoute, useRouter } from "vue-router";
-import { useMypageStore } from "@/stores/mypage";
+import { useRoute, useRouter } from "vue-router";
+import { useFeedStore } from "@/stores/feed";
 import { imageURLParser } from "@/utils/imageURLParser";
 
 const router = useRouter();
 const route = useRoute();
-const myStore = useMypageStore();
+const store = useFeedStore();
 const props = defineProps({
-  post: Object,
+  feed: Object,
 });
 
-const handlePostClick = () => {
-  console.log(props.post);
-  myStore.post = props.post;
-  if (route.path === PATH.MY_DONATION) {
-    router.push(PATH.MY_DONATION_PROJECT(props.post.postId));
-  } else if (route.path === PATH.MY_LIKE) {
-    router.push(PATH.MY_LIKE_DETAIL(props.post.postId));
-  } else if (route.path === PATH.MY_POST) {
-    router.push(PATH.MY_POST_DETAIL(props.post.postId));
-  }
+const handleItemClick = () => {
+  console.log(props.feed.feed.id);
+  store.setFeed(props.feed);
+  router.push(PATH.FEED_DETAIL(props.feed.feed.id));
 };
 </script>
 

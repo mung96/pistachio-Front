@@ -32,12 +32,12 @@
 <script setup>
 import Title from "@/components/common/title/Title.vue";
 import Flex from "@/design/Flex.vue";
-import DonationBar from "@/components/mypage/mydonation/DonationBar.vue";
+import DonationBar from "@/components/mypage/myproject/DonationBar.vue";
 
-import { useMypageStore } from "@/stores/mypage";
+import { useProjectStore } from "@/stores/project";
 
-const store = useMypageStore();
-const post = store.getPost();
+const store = useProjectStore();
+const post = store.getProject();
 </script>
 
 <style scoped>

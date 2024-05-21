@@ -8,13 +8,13 @@ export const PATH = {
   POST: "/post",
 
   MY_PAGE: "/my-page",
-  MY_DONATION: "/my-donation",
-  MY_DONATION_PROJECT: (projectId) => `/my-donation/${projectId}`,
-  MY_LIKE: "/my-like",
+  MY_PROJECT: "/my-project",
+  PROJECT_DETAIL: (projectId) => `/my-donation/${projectId}`,
+  MY_LIKE: "/my-feed/like",
   MY_LIKE_DETAIL: (postId) => `/my-like/${postId}`,
-  MY_POST: "/my-post",
-  FEED_DETAIL: (postId) => `/my-post/${postId}`,
-  UPDATE_INFO: "/update-info",
+  MY_POST: "/my-feed/post",
+  FEED_DETAIL: (postId) => `/feed/${postId}`,
+  UPDATE_PASSWORD: "/update-password",
 
   LOGIN: "/login",
   SIGNUP: "/signup",
@@ -26,15 +26,15 @@ export const NAME = {
   POST: "post",
 
   MY_PAGE: "my-page",
-  MY_DONATION: "my-donation",
-  MY_DONATION_PROJECT: "my-donation-project",
+  MY_PROJECT: "my-donation",
+  PROJECT_DETAIL: "my-donation-project",
 
   MY_LIKE: "my-like",
   MY_LIKE_DETAIL: "my-like-detail",
 
   MY_POST: "my-post",
-  FEED_DETAIL: "my-post-detail",
-  UPDATE_INFO: "update-info",
+  FEED_DETAIL: "feed-detail",
+  UPDATE_PASSWORD: "update-password",
 
   LOGIN: "login",
   SIGNUP: "signup",
@@ -52,13 +52,13 @@ export const TOP_BAR_TYPE = {
   POST: TOP_BAR_CONTENT.POST,
 
   MY_PAGE: TOP_BAR_CONTENT.MAIN,
-  MY_DONATION: TOP_BAR_CONTENT.BACK,
-  MY_DONATION_PROJECT: TOP_BAR_CONTENT.BACK,
+  MY_PROJECT: TOP_BAR_CONTENT.BACK,
+  PROJECT_DETAIL: TOP_BAR_CONTENT.BACK,
   MY_LIKE: TOP_BAR_CONTENT.BACK,
   MY_LIKE_DETAIL: TOP_BAR_CONTENT.BACK,
   MY_POST: TOP_BAR_CONTENT.BACK,
   FEED_DETAIL: TOP_BAR_CONTENT.BACK,
-  UPDATE_INFO: TOP_BAR_CONTENT.BACK,
+  UPDATE_PASSWORD: TOP_BAR_CONTENT.BACK,
 
   LOGIN: TOP_BAR_CONTENT.BACK,
   SIGNUP: TOP_BAR_CONTENT.BACK,

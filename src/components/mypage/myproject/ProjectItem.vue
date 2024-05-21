@@ -19,16 +19,16 @@
 <script setup>
 import { PATH } from "@/constants/router";
 import Flex from "@/design/Flex.vue";
-import { RouterLink, useRouter } from "vue-router";
-import { useMypageStore } from "@/stores/mypage";
+import { useRouter } from "vue-router";
+import { useProjectStore } from "@/stores/project";
 const router = useRouter();
 const props = defineProps({
   project: Object,
 });
-const store = useMypageStore();
+const store = useProjectStore();
 const handleProjectClick = () => {
   store.setProject(props.project);
-  router.push(PATH.MY_DONATION_PROJECT(props.project.projectId));
+  router.push(PATH.PROJECT_DETAIL(props.project.projectId));
 };
 </script>
 

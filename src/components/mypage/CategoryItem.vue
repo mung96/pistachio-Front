@@ -22,9 +22,13 @@ const props = defineProps({
 });
 
 const handleCategoryClick = () => {
-  props.category.name === "로그아웃"
-    ? console.log("로그아웃")
-    : router.push(props.category.path);
+  if (props.category.name === "로그아웃") {
+    console.log(document.cookie);
+    document.cookie =
+      "SESSION=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  } else {
+    router.push(props.category.path);
+  }
 };
 </script>
 

@@ -1,18 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import FeedPage from "@/pages/feed/FeedPage.vue";
+
 import SearchPage from "@/pages/search/SearchPage.vue";
+
 import PostPage from "@/pages/post/PostPage.vue";
+
 import MyPage from "@/pages/mypage/Mypage.vue";
-import MyLikePage from "@/pages/mypage/mylike/MyLikePage.vue";
-import MyPostPage from "@/pages/mypage/mypost/MyPostPage.vue";
-import MyDonationPage from "@/pages/mypage/mydonation/MyDonationPage.vue";
+
+import MyFeedPage from "@/pages/mypage/myfeed/MyFeedPage.vue";
+
+import MyProjectPage from "@/pages/mypage/myproject/MyProjectPage.vue";
+import ProjectDetailPage from "@/pages/mypage/myproject/ProjectDetailPage.vue";
+
 import LoginPage from "@/pages/login/LoginPage.vue";
 import SignupPage from "@/pages/signup/SignupPage.vue";
-import UpdateInfoPage from "@/pages/mypage/updateinfo/UpdateInfoPage.vue";
-import ProjectPage from "@/pages/mypage/mydonation/ProjectPage.vue";
+import UpdatePasswordPage from "@/pages/mypage/updatepassword/UpdatePasswordPage.vue";
+
 import FeedDetailPage from "@/pages/feed/FeedDetailPage.vue";
-import MyLikeDetailPage from "@/pages/mypage/mylike/MyLikeDetailPage.vue";
 
 import { PATH, NAME } from "@/constants/router";
 
@@ -34,30 +39,33 @@ const router = createRouter({
 
     // 마이페이지
     { path: PATH.MY_PAGE, name: NAME.MY_PAGE, component: MyPage },
-    { path: PATH.MY_DONATION, name: NAME.DONATION, component: MyDonationPage },
+
+    //마이페이지 - 프로젝트, 기부
+    { path: PATH.MY_PROJECT, name: NAME.MY_PROJECT, component: MyProjectPage },
     {
-      path: PATH.MY_DONATION_PROJECT(":projectId"),
-      name: NAME.MY_DONATION_PROJECT,
-      component: ProjectPage,
+      path: PATH.PROJECT_DETAIL(":projectId"),
+      name: NAME.PROJECT_DETAIL,
+      component: ProjectDetailPage,
       props: true,
     },
-    { path: PATH.MY_POST, name: NAME.MY_POST, component: MyPostPage },
+
+    //마이페이지 - 내가 쓴 글
+    { path: PATH.MY_POST, name: NAME.MY_POST, component: MyFeedPage },
+
+    //마이페이지 - 좋아요 누른 글
+    { path: PATH.MY_LIKE, name: NAME.MY_LIKE, component: MyFeedPage },
+
+    //마이페이지 - 피드상세
     {
       path: PATH.FEED_DETAIL(":postId"),
       name: NAME.FEED_DETAIL,
       component: FeedDetailPage,
     },
-    { path: PATH.MY_LIKE, name: NAME.MY_LIKE, component: MyLikePage },
-    {
-      path: PATH.MY_LIKE_DETAIL(":postId"),
-      name: NAME.MY_LIKE_DETAIL,
-      component: MyLikeDetailPage,
-    },
 
     {
-      path: PATH.UPDATE_INFO,
-      name: NAME.UPDATE_INFO,
-      component: UpdateInfoPage,
+      path: PATH.UPDATE_PASSWORD,
+      name: NAME.UPDATE_PASSWORD,
+      component: UpdatePasswordPage,
     },
 
     //auth 페이지
