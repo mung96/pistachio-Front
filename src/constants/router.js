@@ -8,8 +8,8 @@ export const PATH = {
   POST: "/post",
 
   MY_PAGE: "/my-page",
-  MY_DONATION: "/my-donation",
-  MY_DONATION_PROJECT: (projectId) => `/my-donation/${projectId}`,
+  MY_PROJECT: "/my-donation",
+  PROJECT_DETAIL: (projectId) => `/my-donation/${projectId}`,
   MY_LIKE: "/my-feed/like",
   MY_LIKE_DETAIL: (postId) => `/my-like/${postId}`,
   MY_POST: "/my-feed/post",
@@ -26,8 +26,8 @@ export const NAME = {
   POST: "post",
 
   MY_PAGE: "my-page",
-  MY_DONATION: "my-donation",
-  MY_DONATION_PROJECT: "my-donation-project",
+  MY_PROJECT: "my-donation",
+  PROJECT_DETAIL: "my-donation-project",
 
   MY_LIKE: "my-like",
   MY_LIKE_DETAIL: "my-like-detail",
@@ -52,8 +52,8 @@ export const TOP_BAR_TYPE = {
   POST: TOP_BAR_CONTENT.POST,
 
   MY_PAGE: TOP_BAR_CONTENT.MAIN,
-  MY_DONATION: TOP_BAR_CONTENT.BACK,
-  MY_DONATION_PROJECT: TOP_BAR_CONTENT.BACK,
+  MY_PROJECT: TOP_BAR_CONTENT.BACK,
+  PROJECT_DETAIL: TOP_BAR_CONTENT.BACK,
   MY_LIKE: TOP_BAR_CONTENT.BACK,
   MY_LIKE_DETAIL: TOP_BAR_CONTENT.BACK,
   MY_POST: TOP_BAR_CONTENT.BACK,

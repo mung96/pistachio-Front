@@ -28,7 +28,7 @@ const props = defineProps({
 const store = useProjectStore();
 const handleProjectClick = () => {
   store.setProject(props.project);
-  router.push(PATH.MY_DONATION_PROJECT(props.project.projectId));
+  router.push(PATH.PROJECT_DETAIL(props.project.projectId));
 };
 </script>
 
