@@ -37,7 +37,7 @@ import DonationBar from "@/components/mypage/mydonation/DonationBar.vue";
 import { useProjectStore } from "@/stores/project";
 
 const store = useProjectStore();
-const post = store.getPost();
+const post = store.getProject();
 </script>
 
 <style scoped>

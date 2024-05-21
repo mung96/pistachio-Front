@@ -1,6 +1,6 @@
 <template>
-  <FeedItem v-if="type === 'feed'" :post="post" />
-  <ProjectItem v-if="type === 'project'" :post="post" />
+  <FeedItem v-if="type === 'feed'" :feed="post" />
+  <ProjectItem v-if="type === 'project'" :project="post" />
 </template>
 
 <script setup>
