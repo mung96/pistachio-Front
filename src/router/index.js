@@ -4,7 +4,6 @@ import FeedPage from "@/pages/feed/FeedPage.vue";
 import SearchPage from "@/pages/search/SearchPage.vue";
 import PostPage from "@/pages/post/PostPage.vue";
 import MyPage from "@/pages/mypage/Mypage.vue";
-import MyLikePage from "@/pages/mypage/mylike/MyLikePage.vue";
 import MyFeedPage from "@/pages/mypage/myfeed/MyFeedPage.vue";
 import MyDonationPage from "@/pages/mypage/mydonation/MyDonationPage.vue";
 import LoginPage from "@/pages/login/LoginPage.vue";
@@ -12,7 +11,6 @@ import SignupPage from "@/pages/signup/SignupPage.vue";
 import UpdateInfoPage from "@/pages/mypage/updateinfo/UpdateInfoPage.vue";
 import ProjectPage from "@/pages/mypage/mydonation/ProjectPage.vue";
 import FeedDetailPage from "@/pages/feed/FeedDetailPage.vue";
-import MyLikeDetailPage from "@/pages/mypage/mylike/MyLikeDetailPage.vue";
 
 import { PATH, NAME } from "@/constants/router";
 
@@ -48,11 +46,6 @@ const router = createRouter({
       component: FeedDetailPage,
     },
     { path: PATH.MY_LIKE, name: NAME.MY_LIKE, component: MyFeedPage },
-    {
-      path: PATH.MY_LIKE_DETAIL(":postId"),
-      name: NAME.MY_LIKE_DETAIL,
-      component: MyLikeDetailPage,
-    },
 
     {
       path: PATH.UPDATE_INFO,
