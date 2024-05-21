@@ -15,8 +15,12 @@
     </Flex>
 
     <Flex gap="8px" align="center">
-      <p class="project">{{ user.project }}</p>
-      <p class="organization">{{ user.organization }}</p>
+      <p class="project" v-if="user.userType !== USER_TYPE.USER">
+        {{ user.project }}
+      </p>
+      <p class="organization" v-if="user.userType === USER_TYPE.PISTACHIO">
+        {{ user.membershipName }}
+      </p>
       <FollowBtn />
     </Flex>
   </Flex>
@@ -25,13 +29,19 @@
 <script setup>
 import Flex from "@/design/Flex.vue";
 import FollowBtn from "../common/button/FollowBtn.vue";
+import { USER_TYPE } from "@/constants/user";
 const props = defineProps({
   user: Object,
 });
 </script>
 
 <style scoped>
-.profile-img img {
+.profile-img {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+img {
   border-radius: 50%;
   width: 24px;
   height: 24px;
