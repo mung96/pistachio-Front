@@ -71,7 +71,7 @@ const handleLoginBtnClick = async () => {
       //이후 피드페이지로 이동
       userStore.setUser(response.data);
       console.log(userStore.getUser());
-
+      userStore.setUserType(response.data.userType);
       router.push(PATH.FEED);
     }
   } catch (error) {

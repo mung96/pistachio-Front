@@ -32,6 +32,7 @@ import { ref } from "vue";
 import { PATH } from "@/constants/router";
 import { useFeedStore } from "@/stores/feed";
 import { useRouter } from "vue-router";
+import { likeLocalStorage } from "@/utils/likeLocalStorage";
 const props = defineProps({
   feed: Object,
   type: String,
@@ -41,8 +42,9 @@ const router = useRouter();
 
 const store = useFeedStore();
 
-const isLike = ref(true); //응답에서 isLike 긁어오기
+const isLike = ref(props.feed.feed.isLike); //응답에서 isLike 긁어오기
 const like = ref(props.feed.feed.likeCnt);
+console.log(props.feed.userLike);
 const isSeeMore = ref(false);
 
 const handleSeeCommentClick = () => {
@@ -54,11 +56,15 @@ const handleSeeCommentClick = () => {
 const handleSeeMoreClick = () => {
   isSeeMore.value = !isSeeMore.value;
 };
+console.log(props.feed);
 const handleClickHeart = () => {
   if (isLike.value) {
     like.value--;
+    //false판정.
+    likeLocalStorage(props.feed.feed.id, false);
   } else {
     like.value++;
+    likeLocalStorage(props.feed.feed.id, true);
   }
   isLike.value = !isLike.value;
   console.log(1);
