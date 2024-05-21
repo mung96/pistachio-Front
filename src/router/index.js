@@ -47,7 +47,7 @@ const router = createRouter({
       name: NAME.FEED_DETAIL,
       component: FeedDetailPage,
     },
-    { path: PATH.MY_LIKE, name: NAME.MY_LIKE, component: MyLikePage },
+    { path: PATH.MY_LIKE, name: NAME.MY_LIKE, component: MyFeedPage },
     {
       path: PATH.MY_LIKE_DETAIL(":postId"),
       name: NAME.MY_LIKE_DETAIL,
