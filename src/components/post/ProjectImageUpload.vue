@@ -1,65 +1,61 @@
 <template>
   <section>
-    <Flex
-      align="center"
-      gap="8px"
-      padding-right="16px"
-      padding-left="16px"
-      padding-top="12px"
-      padding-bottom="12px"
-      class="container"
-      ref="postImg"
-    >
-      <div class="img-container" v-for="preview in previews" :key="preview">
+    <Flex direction="column" gap="8px">
+      <div class="img-container" v-for="preview in previews" :key="preview.id">
         <button @click="handleDeleteImageBtn(preview.id)">X</button>
         <img :src="preview.data" />
       </div>
-      <div v-if="previews.length < POST_IMAGE_MAX">
+      <div v-if="previews.length < imageLen">
         <label class="postImg" for="img"><p>+</p></label>
         <input
           @change="handleFileChange"
           id="img"
           type="file"
           accept="image/*"
+          ref="fileInput"
         />
       </div>
     </Flex>
   </section>
 </template>
+
 <script setup>
-import Flex from "@/design/Flex.vue";
 import { ref } from "vue";
-import { POST_IMAGE_MAX } from "@/constants/ui";
 import { usePostStore } from "@/stores/post";
+import Flex from "@/design/Flex.vue";
 const store = usePostStore();
 
 const previews = ref([]);
-const postImg = ref(null);
+const fileInput = ref(null);
 let id = 0;
 
+const props = defineProps({
+  imageLen: Number,
+});
+
+console.log(props.imageLen);
 const handleFileChange = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
   const reader = new FileReader();
-  reader.readAsDataURL(e.target.files[0]);
-  store.setImages([...store.getImages(), e.target.files[0]]);
+  reader.readAsDataURL(file);
 
   reader.onload = () => {
     const data = reader.result;
-    previews.value = [...previews.value, { id: id++, data: data }];
+    previews.value.push({ id: id++, data });
+    store.setImages([...store.getImages(), file]);
+
     e.target.value = "";
   };
-
-  console.log(store.getImages());
 };
 
 const handleDeleteImageBtn = (targetId) => {
-  previews.value = previews.value.filter((preview) => {
-    if (preview.id !== targetId) return preview;
-  });
-  store.setImages(
-    previews.value.filter((preview) => {
-      if (preview.id !== targetId) return preview.data;
-    })
-  );
+  previews.value = previews.value.filter((preview) => preview.id !== targetId);
+
+  const updatedImages = store
+    .getImages()
+    .filter((_, index) => index !== targetId);
+  store.setImages(updatedImages);
 
   console.log(store.getImages());
 };
@@ -79,8 +75,8 @@ const handleDeleteImageBtn = (targetId) => {
 .postImg,
 .img-container,
 img {
-  width: 76px;
-  height: 76px;
+  width: 360px;
+  height: 200px;
   border: none;
 }
 

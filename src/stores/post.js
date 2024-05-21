@@ -20,5 +20,6 @@ export const usePostStore = defineStore("post", () => {
   const getImages = () => {
     return images.value;
   };
+
   return { content, images, getContent, setContent, setImages, getImages };
 });
