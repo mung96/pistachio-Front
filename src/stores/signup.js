@@ -12,8 +12,8 @@ import { getUsernameDuplicate } from "@/apis/signup/getUsernameDuplicate";
 import { getEmailNumValid } from "@/apis/signup/getEmailNumValid";
 import { postUser } from "@/apis/signup/postUser";
 export const useSignupStore = defineStore("signup", () => {
-  const user = ref({});
-  const step = ref(FIELD.EMAIL);
+  const user = ref({ role: 1 });
+  const step = ref(FIELD.USER_TYPE);
 
   const setUser = (key, value) => {
     user.value[key] = value;

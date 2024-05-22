@@ -6,12 +6,14 @@
     align="center"
   >
     <Flex align="center" gap="8px">
-      <div class="profile-img">
-        <img :src="imageURLParser(feedWriter.userProfile)" alt="유저사진" />
+      <div class="profile-img" onClick="handleProfileClick">
+        <BasicProfileIcon v-if="!feedWriter.userProfile" />
+        <img
+          v-if="feedWriter.userProfile"
+          :src="imageURLParser(feedWriter.userProfile)"
+          alt="유저사진"
+        />
       </div>
-      <Flex direction="column">
-        <p class="nickname">{{ feedWriter.name }}</p>
-      </Flex>
     </Flex>
 
     <Flex gap="8px" align="center">
