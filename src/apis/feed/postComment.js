@@ -10,3 +10,7 @@ export const postComment = async (feedId, comment) => {
   );
   return response;
 };
+
+//해시태그를 받아서 =>
+
+//내가 기부한 프로젝트 => 제목, 내용들 => 지피티 =>
