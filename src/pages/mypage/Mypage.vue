@@ -1,7 +1,7 @@
 <template>
   <main>
     <Flex direction="column" gap="12px">
-      <Title>닉네임</Title>
+      <Title>{{ user.name }}</Title>
       <Profile />
       <Category />
     </Flex>
@@ -13,6 +13,10 @@ import Profile from "@/components/mypage/Profile.vue";
 import Category from "@/components/mypage/Category.vue";
 import Flex from "@/design/Flex.vue";
 import Title from "@/components/common/title/Title.vue";
+import { useUserStore } from "@/stores/user";
+
+const userStore = useUserStore();
+const user = userStore.getUser();
 </script>
 
 <style scoped>

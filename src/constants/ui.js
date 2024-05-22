@@ -7,6 +7,7 @@ export const POST_IMAGE_MAX = 10;
 export const POST_CONTENT_LENGTH = 300;
 
 export const FIELD = {
+  USER_TYPE: "userType",
   EMAIL: "email",
   EMAIL_AUTH: "emailAuth",
   USER_NAME: "name",

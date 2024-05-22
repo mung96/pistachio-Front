@@ -1,7 +1,7 @@
 <template>
   <section>
     <Flex gap="8px" direction="column">
-      <FeedProfile :user="props.feed.userResponse" />
+      <FeedProfile :feedWriter="props.feed.userResponse" />
       <FeedPictures :pictures="props.feed.feedPictures" />
       <FeedContent :feed="props.feed" :type="type" />
     </Flex>

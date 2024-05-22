@@ -6,7 +6,7 @@ export const useFeedStore = defineStore("feed", () => {
 
   const feed = ref({});
   // const feedPictures = ref([]);
-  // const comment = ref([]);
+  const comment = ref([]);
   // const user = ref({});
 
   const setFeed = (newFeed) => {
@@ -17,5 +17,14 @@ export const useFeedStore = defineStore("feed", () => {
   const getFeed = () => {
     return feed.value;
   };
-  return { feed, setFeed, getFeed };
+
+  const setComment = (newComment) => {
+    // [feed.value, feedPictures.value, comment.value, user.value] = newFeed;
+    comment.value = newComment;
+  };
+
+  const getComment = () => {
+    return comment.value;
+  };
+  return { feed, setFeed, getFeed, comment, setComment, getComment };
 });

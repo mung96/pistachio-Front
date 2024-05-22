@@ -7,7 +7,9 @@
       direction="column"
     >
       <Flex align="center" gap="8px">
-        <div class="profile-img"><img src="" alt="프사" /></div>
+        <div class="profile-img">
+          <img :src="imageURLParser(comment.userProfile)" alt="프사" />
+        </div>
         <Flex direction="column">
           <p class="nickname">{{ comment.username }}</p>
         </Flex>
@@ -22,13 +24,13 @@
 
 <script setup>
 import Flex from "@/design/Flex.vue";
+import { imageURLParser } from "@/utils/imageURLParser";
 import { onMounted, ref } from "vue";
 
 const props = defineProps({
   comment: Object,
 });
-
-onMounted(async () => {});
+console.log(props.comment);
 </script>
 
 <style scoped>

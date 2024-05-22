@@ -1,6 +1,9 @@
 <template>
   <main>
     <SignupCompleteModal v-if="isModalOpen" />
+
+    <UserTypePage v-if="step === FIELD.USER_TYPE" />
+
     <AuthInput
       v-if="step === FIELD.EMAIL"
       :field="FIELD.EMAIL"
@@ -43,6 +46,7 @@ const { user, step } = storeToRefs(store);
 const isModalOpen = ref(false);
 import SignupCompleteModal from "@/modals/SignupCompleteModal.vue";
 import { ref } from "vue";
+import UserTypePage from "@/components/signup/UserTypePage.vue";
 const handleModalOpen = () => {
   isModalOpen.value = true;
 };

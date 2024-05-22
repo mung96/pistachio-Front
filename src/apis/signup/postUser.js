@@ -6,10 +6,12 @@ export const postUser = async () => {
   const store = useSignupStore();
   const user = store.getUser();
   console.log(user);
-  const { status } = await axiosInstance.post(END_POINTS.SIGNUP, {
-    email: user.email,
-    name: user.name,
-    password: user.password,
-  });
+  const { status } = await axiosInstance.post(
+    END_POINTS.SIGNUP,
+    user
+    // {
+    //   role:user.role,email:user.email,name:user.name,password:user.password,
+    // },
+  );
   return status;
 };

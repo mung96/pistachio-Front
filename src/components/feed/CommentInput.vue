@@ -15,9 +15,10 @@ import Input from "@/components/common/input/Input.vue";
 import { postComment } from "@/apis/feed/postComment";
 import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
+import { getFeeds } from "@/apis/feed/getFeeds";
 const feedStore = useFeedStore();
 const userStore = useUserStore();
-const feed = feedStore.getFeed();
+const feed = ref(feedStore.getFeed());
 
 const comment = ref({
   feedId: feedStore.getFeed().feed.id,
@@ -29,12 +30,29 @@ const handleInputChange = (e) => {
   comment.value.content = e.target.value;
 };
 
-const handleEnter = async () => {
-  try {
-    const response = await postComment(comment.value.feedId, comment.value);
-    comment.value.content = "";
-  } catch (error) {
-    console.log(error);
+const handleEnter = async (e) => {
+  if (e.target.value) {
+    try {
+      const response = await postComment(comment.value.feedId, comment.value);
+      e.target.value = "";
+      comment.value.content = "";
+
+      //댓글 요청
+      try {
+        const response = await getFeeds();
+
+        feedStore.setFeed(
+          response.data.find((item) => {
+            return item.feed.id === feed.value.feed.id;
+          })
+        );
+        feed.value = feedStore.getFeed();
+      } catch (error) {
+        console.log(error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 </script>
