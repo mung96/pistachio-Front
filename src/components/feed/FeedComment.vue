@@ -9,12 +9,12 @@
       <Flex align="center" gap="8px">
         <div class="profile-img"><img src="" alt="프사" /></div>
         <Flex direction="column">
-          <p class="nickname">{{ comment.content }}</p>
+          <p class="nickname">{{ comment.username }}</p>
         </Flex>
       </Flex>
 
       <Flex gap="8px" align="center">
-        <p class="comment">{{ "댓글내용내용" }}</p>
+        <p class="comment">{{ comment.content }}</p>
       </Flex>
     </Flex>
   </section>
