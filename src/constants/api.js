@@ -9,6 +9,7 @@ export const END_POINTS = {
   DUPLICATE_EMAIL: (email) => `/user/validate/emails/${email}/exists`,
   EMAIL_NUM_VALID: (num) => `/user/validate/emails/${num}`,
   PROFILE: "/user/profile",
+  FOLLOW: "/user/follow",
 
   FEED: "/feed",
   FEED_ONE: (feedId) => `/feed/${feedId}`,

@@ -7,13 +7,25 @@
   >
     <Flex align="center" gap="8px">
       <div class="profile-img" onClick="handleProfileClick">
-        <BasicProfileIcon v-if="!feedWriter.userProfile" />
+        <BasicProfileIcon width="24px" v-if="!feedWriter.userProfile" />
         <img
           v-if="feedWriter.userProfile"
           :src="imageURLParser(feedWriter.userProfile)"
           alt="유저사진"
         />
       </div>
+      <p
+        class="nickname"
+        v-if="feedWriter.userId !== userStore.getUser().userId"
+      >
+        {{ feedWriter.name }}
+      </p>
+      <p
+        class="my-name"
+        v-if="feedWriter.userId === userStore.getUser().userId"
+      >
+        {{ "나 (me)" }}
+      </p>
     </Flex>
 
     <Flex gap="8px" align="center">
@@ -26,7 +38,10 @@
       >
         {{ feedWriter.membershipName }}
       </p>
-      <FollowBtn />
+      <FollowBtn
+        v-if="feedWriter.userId !== userStore.getUser().userId && !isFollow"
+        :userId="feedWriter.userId"
+      />
     </Flex>
   </Flex>
 </template>
@@ -35,14 +50,23 @@
 import Flex from "@/design/Flex.vue";
 import FollowBtn from "../common/button/FollowBtn.vue";
 import { USER_TYPE } from "@/constants/user";
+import { useUserStore } from "@/stores/user";
 import { imageURLParser } from "@/utils/imageURLParser";
+import BasicProfileIcon from "@/assets/svg/basicProfileIcon.svg";
+
+const userStore = useUserStore();
 const props = defineProps({
   feedWriter: Object,
+  isFollow: Boolean,
 });
 console.log(props.feedWriter);
 </script>
 
 <style scoped>
+.my-name {
+  font: var(--base-mm-font);
+  color: var(--sub-color);
+}
 .profile-img {
   border-radius: 50%;
   width: 24px;
@@ -53,6 +77,7 @@ img {
   width: 24px;
   height: 24px;
 }
+
 .nickname {
   font: var(--xs-pre-font);
   font-weight: 700;

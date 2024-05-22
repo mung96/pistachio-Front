@@ -8,11 +8,19 @@
     >
       <Flex align="center" gap="8px">
         <div class="profile-img">
-          <img :src="imageURLParser(comment.userProfile)" alt="프사" />
+          <BasicProfileIcon width="24px" v-if="!comment.userProfile" />
+          <img
+            v-if="comment.userProfile"
+            :src="imageURLParser(comment.userProfile)"
+            alt="유저사진"
+          />
         </div>
-        <Flex direction="column">
-          <p class="nickname">{{ comment.username }}</p>
-        </Flex>
+        <p class="name" v-if="comment.userId !== userStore.getUser().userId">
+          {{ comment.username }}
+        </p>
+        <p class="name" v-if="comment.userId === userStore.getUser().userId">
+          {{ "나 (me)" }}
+        </p>
       </Flex>
 
       <Flex gap="8px" align="center">
@@ -25,12 +33,14 @@
 <script setup>
 import Flex from "@/design/Flex.vue";
 import { imageURLParser } from "@/utils/imageURLParser";
-import { onMounted, ref } from "vue";
+import { useUserStore } from "@/stores/user";
+import BasicProfileIcon from "@/assets/svg/basicProfileIcon.svg";
 
+const userStore = useUserStore();
 const props = defineProps({
   comment: Object,
 });
-console.log(props.comment);
+console.log(userStore.getUser().userId);
 </script>
 
 <style scoped>
@@ -39,7 +49,7 @@ console.log(props.comment);
   width: 24px;
   height: 24px;
 }
-.nickname {
+.name {
   font: var(--xs-pre-font);
   font-weight: 700;
 }

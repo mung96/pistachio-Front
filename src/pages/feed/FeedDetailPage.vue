@@ -19,7 +19,9 @@ import FeedComment from "@/components/feed/FeedComment.vue";
 import { useFeedStore } from "@/stores/feed";
 import Flex from "@/design/Flex.vue";
 import CommentInput from "@/components/feed/CommentInput.vue";
-import { ref, watch, watchEffect } from "vue";
+import { ref, watch, watchEffect, onUnmounted } from "vue";
+import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
+import { KEY } from "@/utils/likeLocalStorage";
 
 const store = useFeedStore();
 const feed = store.getFeed();
@@ -32,6 +34,16 @@ watch(
     console.log(comments.value);
   }
 );
+onUnmounted(async () => {
+  try {
+    if (localStorage.getItem(KEY)) {
+      const response = await postLikeUpdate();
+      console.log(response);
+    }
+  } catch (error) {
+    console.log(error.request);
+  }
+});
 </script>
 
 <style></style>

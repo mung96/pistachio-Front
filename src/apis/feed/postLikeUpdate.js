@@ -1,6 +1,5 @@
 import { END_POINTS } from "@/constants/api";
 import { axiosInstance } from "../axiosInstance";
-import { usePostStore } from "@/stores/post";
 import { jsonLocalStorage } from "@/utils/jsonLocalStorage";
 import { KEY } from "@/utils/likeLocalStorage";
 

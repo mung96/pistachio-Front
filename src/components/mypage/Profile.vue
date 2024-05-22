@@ -3,7 +3,7 @@
     <div>
       <label class="postImg" for="img"
         ><div onClick="handleProfileClick">
-          <BasicProfileIcon v-if="!user.userProfile" />
+          <BasicProfileIcon width="60px" v-if="!user.userProfile" />
           <img
             v-if="user.userProfile"
             :src="imageURLParser(user.userProfile)"
@@ -13,14 +13,17 @@
     </div>
 
     <Flex gap="48px">
-      <Flex direction="column" align="center"
-        ><span>36</span><span>게시물</span></Flex
+      <Flex direction="column" align="center" gap="4px"
+        ><span>{{ user.followerCnt }}</span
+        ><span>팔로워</span></Flex
       >
-      <Flex direction="column" align="center"
-        ><span>36</span><span>팔로워</span></Flex
+      <Flex direction="column" align="center" gap="4px"
+        ><span>{{ user.followingCnt }}</span
+        ><span>팔로잉</span></Flex
       >
-      <Flex direction="column" align="center"
-        ><span>36</span><span>팔로잉</span></Flex
+      <Flex direction="column" align="center" gap="4px"
+        ><span>{{ user.pista }}</span
+        ><span class="pista">pista</span></Flex
       >
     </Flex>
   </Flex>
@@ -32,6 +35,7 @@ import BasicProfileIcon from "@/assets/svg/basicProfileIcon.svg";
 import { useUserStore } from "@/stores/user";
 import { postProfile } from "@/apis/mypage/postProfile";
 import { imageURLParser } from "@/utils/imageURLParser";
+import PistaIcon from "@/assets/svg/pistaIcon.svg";
 
 const { user } = useUserStore();
 const userStore = useUserStore();
@@ -43,7 +47,6 @@ const handleFileChange = async (e) => {
   //바꾸면 요청 보내고 응답으로 아예 프로필을 바꾸자.
   try {
     const response = await postProfile(e.target.files[0]);
-    console.log(response.data);
     user.userProfile = response.data;
   } catch (error) {
     console.log(error);
@@ -56,6 +59,11 @@ h3 {
   font: var(--xl-pre-font);
   font-weight: 700;
 }
+.pista {
+  font: var(--sm-mm-font);
+  white-space: nowrap;
+}
+
 span {
   font: var(--sm-pre-font);
   white-space: nowrap;
@@ -69,5 +77,14 @@ img {
   border: 1px solid black;
   border-radius: 12px;
   padding: 12px;
+}
+
+input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 </style>
