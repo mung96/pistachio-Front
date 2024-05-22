@@ -7,7 +7,7 @@
   >
     <Flex align="center" gap="8px">
       <div class="profile-img">
-        <img :src="feedWriter.userProfile" alt="유저사진" />
+        <img :src="imageURLParser(feedWriter.userProfile)" alt="유저사진" />
       </div>
       <Flex direction="column">
         <p class="nickname">{{ feedWriter.name }}</p>
@@ -33,9 +33,11 @@
 import Flex from "@/design/Flex.vue";
 import FollowBtn from "../common/button/FollowBtn.vue";
 import { USER_TYPE } from "@/constants/user";
+import { imageURLParser } from "@/utils/imageURLParser";
 const props = defineProps({
   feedWriter: Object,
 });
+console.log(props.feedWriter);
 </script>
 
 <style scoped>
