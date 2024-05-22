@@ -27,8 +27,6 @@ import { onMounted, ref } from "vue";
 const props = defineProps({
   comment: Object,
 });
-
-onMounted(async () => {});
 </script>
 
 <style scoped>

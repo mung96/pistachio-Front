@@ -7,19 +7,22 @@
   >
     <Flex align="center" gap="8px">
       <div class="profile-img">
-        <img :src="user.userProfile" alt="유저사진" />
+        <img :src="feedWriter.userProfile" alt="유저사진" />
       </div>
       <Flex direction="column">
-        <p class="nickname">{{ user.name }}</p>
+        <p class="nickname">{{ feedWriter.name }}</p>
       </Flex>
     </Flex>
 
     <Flex gap="8px" align="center">
-      <p class="project" v-if="user.userType !== USER_TYPE.USER">
-        {{ user.project }}
+      <p class="project" v-if="feedWriter.userType !== USER_TYPE.USER">
+        {{ feedWriter.project }}
       </p>
-      <p class="organization" v-if="user.userType === USER_TYPE.PISTACHIO">
-        {{ user.membershipName }}
+      <p
+        class="organization"
+        v-if="feedWriter.userType === USER_TYPE.PISTACHIO"
+      >
+        {{ feedWriter.membershipName }}
       </p>
       <FollowBtn />
     </Flex>
@@ -31,7 +34,7 @@ import Flex from "@/design/Flex.vue";
 import FollowBtn from "../common/button/FollowBtn.vue";
 import { USER_TYPE } from "@/constants/user";
 const props = defineProps({
-  user: Object,
+  feedWriter: Object,
 });
 </script>
 
