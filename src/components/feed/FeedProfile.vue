@@ -40,6 +40,7 @@
       </p>
       <FollowBtn
         v-if="feedWriter.userId !== userStore.getUser().userId && !isFollow"
+        :userId="feedWriter.userId"
       />
     </Flex>
   </Flex>
