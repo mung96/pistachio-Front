@@ -10,9 +10,9 @@
 import Feed from "@/components/feed/Feed.vue";
 import Flex from "@/design/Flex.vue";
 import { ref, onMounted, onUnmounted } from "vue";
-import { response } from "@/dummy/feed";
 import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
 import { getFeeds } from "@/apis/feed/getFeeds";
+import { KEY } from "@/utils/likeLocalStorage";
 const feeds = ref([]);
 
 onMounted(async () => {
@@ -27,10 +27,12 @@ onMounted(async () => {
 
 onUnmounted(async () => {
   try {
-    const response = await postLikeUpdate();
-    console.log(response);
+    if (localStorage.getItem(KEY)) {
+      const response = await postLikeUpdate();
+      console.log(response);
+    }
   } catch (error) {
-    console.log(error);
+    console.log(error.request);
   }
 });
 </script>

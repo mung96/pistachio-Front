@@ -37,7 +37,6 @@ const props = defineProps({
   feed: Object,
   type: String,
 });
-console.log(props.type);
 const router = useRouter();
 
 const store = useFeedStore();
@@ -55,7 +54,7 @@ const handleSeeCommentClick = () => {
 const handleSeeMoreClick = () => {
   isSeeMore.value = !isSeeMore.value;
 };
-console.log(props.feed);
+
 const handleClickHeart = () => {
   if (isLike.value) {
     like.value--;
