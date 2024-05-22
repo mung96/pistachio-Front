@@ -29,7 +29,6 @@ const props = defineProps({
 });
 
 onMounted(async () => {});
-// console.log(props.feed);
 </script>
 
 <style scoped>

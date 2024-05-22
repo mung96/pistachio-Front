@@ -44,7 +44,6 @@ const store = useFeedStore();
 
 const isLike = ref(props.feed.userLike); //응답에서 isLike 긁어오기
 const like = ref(props.feed.feed.likeCnt);
-console.log(props.feed.userLike);
 const isSeeMore = ref(false);
 
 const handleSeeCommentClick = () => {
@@ -67,7 +66,6 @@ const handleClickHeart = () => {
     likeLocalStorage(props.feed.feed.id, true);
   }
   isLike.value = !isLike.value;
-  console.log(1);
 };
 </script>
 
