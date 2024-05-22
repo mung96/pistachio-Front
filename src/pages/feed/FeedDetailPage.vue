@@ -2,9 +2,9 @@
   <main>
     <Flex direction="column" gap="20px">
       <Feed :feed="feed" type="detail" />
-      <Flex>
+      <Flex direction="column" gap="8px">
         <FeedComment
-          v-for="comment in feed.feedComment"
+          v-for="comment in feed.commentResponses"
           :comment="comment"
           :key="comment"
       /></Flex>
@@ -22,7 +22,6 @@ import CommentInput from "@/components/feed/CommentInput.vue";
 
 const store = useFeedStore();
 const feed = store.getFeed();
-console.log(feed);
 </script>
 
 <style></style>

@@ -18,7 +18,6 @@ import SignupPage from "@/pages/signup/SignupPage.vue";
 import UpdatePasswordPage from "@/pages/mypage/updatepassword/UpdatePasswordPage.vue";
 
 import FeedDetailPage from "@/pages/feed/FeedDetailPage.vue";
-
 import { PATH, NAME } from "@/constants/router";
 
 const router = createRouter({
@@ -30,12 +29,17 @@ const router = createRouter({
     //검색페이지
     { path: PATH.SEARCH, name: NAME.SEARCH, component: SearchPage },
 
-    //게시글 추가
+    // 게시글 추가
     {
       path: PATH.POST,
       name: NAME.POST,
       component: PostPage,
     },
+    // {
+    //   path: PATH.POST,
+    //   name: NAME.POST,
+    //   component: PostProjectPage,
+    // },
 
     // 마이페이지
     { path: PATH.MY_PAGE, name: NAME.MY_PAGE, component: MyPage },

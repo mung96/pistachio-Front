@@ -28,20 +28,20 @@
 import Flex from "@/design/Flex.vue";
 import MoneyIcon from "@/assets/svg/moneyIcon.svg";
 import HeartIcon from "@/assets/svg/heartIcon.svg";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { PATH } from "@/constants/router";
 import { useFeedStore } from "@/stores/feed";
 import { useRouter } from "vue-router";
+import { likeLocalStorage } from "@/utils/likeLocalStorage";
 const props = defineProps({
   feed: Object,
   type: String,
 });
-console.log(props.type);
 const router = useRouter();
 
 const store = useFeedStore();
 
-const isLike = ref(true); //응답에서 isLike 긁어오기
+const isLike = ref(props.feed.userLike); //응답에서 isLike 긁어오기
 const like = ref(props.feed.feed.likeCnt);
 const isSeeMore = ref(false);
 
@@ -54,14 +54,17 @@ const handleSeeCommentClick = () => {
 const handleSeeMoreClick = () => {
   isSeeMore.value = !isSeeMore.value;
 };
+
 const handleClickHeart = () => {
   if (isLike.value) {
     like.value--;
+    //false판정.
+    likeLocalStorage(props.feed.feed.id, false);
   } else {
     like.value++;
+    likeLocalStorage(props.feed.feed.id, true);
   }
   isLike.value = !isLike.value;
-  console.log(1);
 };
 </script>
 

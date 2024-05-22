@@ -6,16 +6,21 @@
     align="center"
   >
     <Flex align="center" gap="8px">
-      <div class="profile-img"><img :src="props.profile.image" /></div>
+      <div class="profile-img">
+        <img :src="user.userProfile" alt="유저사진" />
+      </div>
       <Flex direction="column">
-        <p class="nickname">{{ profile.nickname }}</p>
-        <p class="location">{{ profile.location }}</p>
+        <p class="nickname">{{ user.name }}</p>
       </Flex>
     </Flex>
 
     <Flex gap="8px" align="center">
-      <p class="project">{{ profile.project }}</p>
-      <p class="organization">{{ profile.organization }}</p>
+      <p class="project" v-if="user.userType !== USER_TYPE.USER">
+        {{ user.project }}
+      </p>
+      <p class="organization" v-if="user.userType === USER_TYPE.PISTACHIO">
+        {{ user.membershipName }}
+      </p>
       <FollowBtn />
     </Flex>
   </Flex>
@@ -24,13 +29,19 @@
 <script setup>
 import Flex from "@/design/Flex.vue";
 import FollowBtn from "../common/button/FollowBtn.vue";
+import { USER_TYPE } from "@/constants/user";
 const props = defineProps({
-  profile: Object,
+  user: Object,
 });
 </script>
 
 <style scoped>
-.profile-img img {
+.profile-img {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+img {
   border-radius: 50%;
   width: 24px;
   height: 24px;

@@ -1,5 +1,5 @@
 export const palette = {
-  main: "#cfe6ce",
+  main: "rgb(119, 229, 115, 0.89)",
   sub: "#50d6b0",
   pinkred: "#f7385a",
   green: "#14d863",

@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 
-export const useFeedStore = defineStore("feed", (feedId) => {
+export const useFeedStore = defineStore("feed", () => {
   // const project = ref({});
 
   const feed = ref({});

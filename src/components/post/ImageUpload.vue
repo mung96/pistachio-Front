@@ -31,7 +31,6 @@ import Flex from "@/design/Flex.vue";
 import { ref } from "vue";
 import { POST_IMAGE_MAX } from "@/constants/ui";
 import { usePostStore } from "@/stores/post";
-const message = ref("");
 const store = usePostStore();
 
 const previews = ref([]);

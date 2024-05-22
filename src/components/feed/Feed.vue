@@ -1,7 +1,7 @@
 <template>
   <section>
     <Flex gap="8px" direction="column">
-      <!-- <FeedProfile :profile="props.user" /> -->
+      <FeedProfile :user="props.feed.userResponse" />
       <FeedPictures :pictures="props.feed.feedPictures" />
       <FeedContent :feed="props.feed" :type="type" />
     </Flex>
@@ -12,16 +12,14 @@
 import FeedProfile from "./FeedProfile.vue";
 import FeedContent from "./FeedContent.vue";
 import FeedPictures from "./FeedPictures.vue";
+import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
 import Flex from "@/design/Flex.vue";
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 const user = ref({});
 const props = defineProps({
   feed: Object,
   type: String,
 });
-
-onMounted(async () => {});
-// console.log(props.feed);
 </script>
 
 <style scoped></style>

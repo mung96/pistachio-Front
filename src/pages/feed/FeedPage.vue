@@ -1,6 +1,5 @@
 <template>
   <main>
-    <!-- <SignupCompleteModal /> -->
     <Flex direction="column" gap="32px">
       <Feed v-for="feed in feeds" :feed="feed" :key="feed" />
     </Flex>
@@ -10,10 +9,10 @@
 <script setup>
 import Feed from "@/components/feed/Feed.vue";
 import Flex from "@/design/Flex.vue";
-import { ref, onMounted } from "vue";
-import { response } from "@/dummy/feed";
-import SignupCompleteModal from "@/modals/SignupCompleteModal.vue";
+import { ref, onMounted, onUnmounted } from "vue";
+import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
 import { getFeeds } from "@/apis/feed/getFeeds";
+import { KEY } from "@/utils/likeLocalStorage";
 const feeds = ref([]);
 
 onMounted(async () => {
@@ -23,6 +22,17 @@ onMounted(async () => {
     console.log(feeds.value);
   } catch (error) {
     console.log(error);
+  }
+});
+
+onUnmounted(async () => {
+  try {
+    if (localStorage.getItem(KEY)) {
+      const response = await postLikeUpdate();
+      console.log(response);
+    }
+  } catch (error) {
+    console.log(error.request);
   }
 });
 </script>
