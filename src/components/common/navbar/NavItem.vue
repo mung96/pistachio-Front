@@ -28,7 +28,6 @@ const isActive = computed(() => {
 
 const handleNavClick = () => {
   props.page.path === PATH.POST && (postStore.postType = "new");
-  console.log(postStore.getPostType());
   router.push(props.page.path);
 };
 </script>

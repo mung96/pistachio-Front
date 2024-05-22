@@ -9,7 +9,6 @@ import { FOOLLW_TRUE_BTN_TEXT, FOLLOW_FALSE_BTN_TEXT } from "@/constants/ui";
 defineProps({
   isFollow: Boolean,
 });
-console.log(1);
 </script>
 
 <style scoped>

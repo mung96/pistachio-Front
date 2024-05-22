@@ -7,13 +7,16 @@
   >
     <Flex align="center" gap="8px">
       <div class="profile-img" onClick="handleProfileClick">
-        <BasicProfileIcon v-if="!feedWriter.userProfile" />
+        <BasicProfileIcon width="24px" v-if="!feedWriter.userProfile" />
         <img
           v-if="feedWriter.userProfile"
           :src="imageURLParser(feedWriter.userProfile)"
           alt="유저사진"
         />
       </div>
+      <p class="nickname">
+        {{ feedWriter.name }}
+      </p>
     </Flex>
 
     <Flex gap="8px" align="center">
@@ -26,7 +29,7 @@
       >
         {{ feedWriter.membershipName }}
       </p>
-      <FollowBtn />
+      <FollowBtn v-if="!isFollow" />
     </Flex>
   </Flex>
 </template>
@@ -36,8 +39,10 @@ import Flex from "@/design/Flex.vue";
 import FollowBtn from "../common/button/FollowBtn.vue";
 import { USER_TYPE } from "@/constants/user";
 import { imageURLParser } from "@/utils/imageURLParser";
+import BasicProfileIcon from "@/assets/svg/basicProfileIcon.svg";
 const props = defineProps({
   feedWriter: Object,
+  isFollow: Boolean,
 });
 console.log(props.feedWriter);
 </script>
@@ -53,6 +58,7 @@ img {
   width: 24px;
   height: 24px;
 }
+
 .nickname {
   font: var(--xs-pre-font);
   font-weight: 700;

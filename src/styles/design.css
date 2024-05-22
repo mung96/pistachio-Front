@@ -11,18 +11,18 @@
   --gray700-color: #52555b;
 
   /* typograpy 지정 = fonts-size + line-height */
-  --xl-pre-font: 20px/28px pretendard;
-  --lg-pre-font: 18px/28px pretendard;
-  --base-pre-font: 16px/24px pretendard;
-  --sm-pre-font: 14px/20px pretendard;
-  --xs-pre-font: 12px/14px pretendard;
-  --xxs-pre-font: 10px/12px pretendard;
-  --xl-mm-font: 20px/28px meetme;
-  --lg-mm-font: 18px/28px meetme;
-  --base-mm-font: 16px/24px meetme;
-  --sm-mm-font: 14px/20px meetme;
-  --xs-mm-font: 12px/14px meetme;
-  --xxs-mm-font: 10px/12px meetme;
+  --xl-pre-font: 22px/28px pretendard;
+  --lg-pre-font: 20px/28px pretendard;
+  --base-pre-font: 18px/24px pretendard;
+  --sm-pre-font: 16px/20px pretendard;
+  --xs-pre-font: 14px/14px pretendard;
+  --xxs-pre-font: 12px/12px pretendard;
+  --xl-mm-font: 22px/28px meetme;
+  --lg-mm-font: 20px/28px meetme;
+  --base-mm-font: 18px/24px meetme;
+  --sm-mm-font: 16px/20px meetme;
+  --xs-mm-font: 14px/14px meetme;
+  --xxs-mm-font: 12px/12px meetme;
 
   /* gap, radius 변수 지정 */
   --spacing-1: 4px;
