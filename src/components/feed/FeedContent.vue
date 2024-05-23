@@ -4,7 +4,7 @@
       <div @click="handleClickHeart">
         <HeartIcon :fill="isLike ? '#50d6b0' : 'none'" />
       </div>
-      <div>
+      <div @click="handleMoneyClick">
         <MoneyIcon />
       </div>
     </Flex>
@@ -33,6 +33,7 @@ import { PATH } from "@/constants/router";
 import { useFeedStore } from "@/stores/feed";
 import { useRouter } from "vue-router";
 import { likeLocalStorage } from "@/utils/likeLocalStorage";
+
 const props = defineProps({
   feed: Object,
   type: String,
@@ -44,6 +45,12 @@ const store = useFeedStore();
 const isLike = ref(props.feed.userLike); //응답에서 isLike 긁어오기
 const like = ref(props.feed.feed.likeCnt);
 const isSeeMore = ref(false);
+const emit = defineEmits(["donationModalOpen"]);
+
+const handleMoneyClick = () => {
+  store.setFeed(props.feed);
+  emit("donationModalOpen");
+};
 
 const handleSeeCommentClick = () => {
   store.setFeed(props.feed);

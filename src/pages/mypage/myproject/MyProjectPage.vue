@@ -13,9 +13,23 @@ import PostItem from "@/components/mypage/common/PostItem.vue";
 import { USER_TYPE } from "@/constants/user";
 import { projects } from "@/dummy/mypage";
 import { useUserStore } from "@/stores/user";
-
-const posts = projects;
+import { getDonate } from "@/apis/donate/getDonate";
+import { ref } from "vue";
+import { onMounted } from "vue";
+const posts = ref([]);
 const { userType } = useUserStore();
+
+onMounted(async () => {
+  //usertype별로 api 요청
+
+  try {
+    const response = await getDonate();
+    console.log(response.data);
+    posts.value = response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 </script>
 
 <style></style>

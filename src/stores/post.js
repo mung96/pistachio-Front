@@ -7,6 +7,15 @@ export const usePostStore = defineStore("post", () => {
   const projectName = ref("");
   const postType = ref(""); //new아니면 project
   const isInput = ref(true);
+  const projectId = ref();
+
+  const setProjectId = (newProjectId) => {
+    projectId.value = newProjectId;
+  };
+
+  const getProjectId = () => {
+    return projectId.value;
+  };
 
   const setContent = (newContent) => {
     content.value = newContent;
@@ -53,6 +62,9 @@ export const usePostStore = defineStore("post", () => {
     projectName,
     isInput,
     postType,
+    projectId,
+    setProjectId,
+    getProjectId,
     getContent,
     setContent,
     setImages,

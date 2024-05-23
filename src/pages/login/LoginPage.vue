@@ -48,6 +48,7 @@ const isPwdVisible = ref(false);
 import { useRouter } from "vue-router";
 import { PATH } from "@/constants/router";
 import { useUserStore } from "@/stores/user";
+import { getUser } from "@/apis/user/getUser";
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -69,6 +70,8 @@ const handleLoginBtnClick = async () => {
     console.log(response.status);
     if (response.status === HTTP_STATUS_CODE.SUCCESS) {
       //이후 피드페이지로 이동
+
+      // const response = await getUser(response.data.userId);
       userStore.setUser(response.data);
       console.log(userStore.getUser());
       userStore.setUserType(response.data.userType);

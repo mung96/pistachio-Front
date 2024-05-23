@@ -4,6 +4,7 @@ export const AWS_BUCKET_URL = import.meta.env.VITE_APP_AWS_BUCKET_URL;
 export const END_POINTS = {
   LOGIN: "/user/login",
   SIGNUP: "/user",
+  USER: "/user",
 
   DUPLICATE_USERNAME: (username) => `/user/validate/names/${username}/exists`,
   DUPLICATE_EMAIL: (email) => `/user/validate/emails/${email}/exists`,
@@ -12,9 +13,15 @@ export const END_POINTS = {
   FOLLOW: "/user/follow",
 
   FEED: "/feed",
+  MY_FEED: "/feed/myFeed",
   FEED_ONE: (feedId) => `/feed/${feedId}`,
   LIKE_UPDATE: "/feed/likes-update",
   COMMENT: (feedId) => `/feed/${feedId}/comments`,
+
+  DONATE: "/donate",
+  PROJECT: "/donate/project",
+  RECHARGE: "/donate/recharge",
+  MEMBERSHIP: "/donate/membership",
 };
 
 export const HTTP_STATUS_CODE = {
