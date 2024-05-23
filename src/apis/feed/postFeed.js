@@ -13,7 +13,7 @@ export const postFeed = async () => {
       new Blob(
         [
           JSON.stringify({
-            projectId: 1,
+            projectId: store.projectId,
             content: store.getContent(),
           }),
         ],

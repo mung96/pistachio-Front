@@ -58,7 +58,9 @@ const handleCreatePostBtn = async () => {
   if (userStore.getUserType() === USER_TYPE.AGENCY) {
     try {
       const response = await postProject();
-      console.log(response);
+
+      postStore.projectId = response.data;
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
