@@ -13,6 +13,7 @@ import { onMounted, ref } from "vue";
 import { getFeeds } from "@/apis/feed/getFeeds";
 import { useRoute } from "vue-router";
 import { PATH } from "@/constants/router";
+import { getMyFeed } from "@/apis/feed/getMyFeed";
 
 const route = useRoute();
 const posts = ref([]);
@@ -21,16 +22,22 @@ const type = ref("");
 onMounted(async () => {
   if (route.path === PATH.MY_LIKE) {
     type.value = "like";
+    try {
+      //TODO: type별로 api요청 다르게
+      const response = await getMyFeed();
+      posts.value = response.data;
+    } catch (error) {
+      console.log(error);
+    }
   } else if (route.path === PATH.MY_POST) {
     type.value = "post";
-  }
-
-  try {
-    //TODO: type별로 api요청 다르게
-    const response = await getFeeds();
-    posts.value = response.data;
-  } catch (error) {
-    console.log(error);
+    try {
+      //TODO: type별로 api요청 다르게
+      const response = await getMyFeed();
+      posts.value = response.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 </script>
