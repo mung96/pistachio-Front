@@ -1,12 +1,16 @@
 <script setup>
 import { RouterView } from "vue-router";
 import Navbar from "@/components/common/navbar/Navbar.vue";
-import Topbar from "./components/common/topbar/Topbar.vue";
+import DonationBar from "./components/mypage/myproject/DonationBar.vue";
+
+import { useRouter } from "vue-router";
+const router = useRouter();
+console.log(router.name);
 </script>
 
 <template>
   <div>
-    <Topbar />
+    <!-- <Topbar /> -->
     <div class="layout">
       <RouterView />
     </div>

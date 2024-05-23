@@ -10,22 +10,10 @@
       padding-right="16px"
       padding-left="16px"
     >
-      <component v-if="typeof type.left === 'object'" :is="type.left" />
-      <p v-else-if="typeof type.left === 'string'">{{ type.left }}</p>
-      <div v-else></div>
+      <ArrowLeftIcon @click="handleArrowClick" />
+      <p>글쓰기</p>
 
-      <component v-if="typeof type.center === 'object'" :is="type.center" />
-      <p v-else-if="typeof type.center === 'string'">{{ type.center }}</p>
-      <div v-else></div>
-
-      <component v-if="typeof type.right === 'object'" :is="type.right" />
-      <p
-        @click="handleCreatePostBtn"
-        v-else-if="typeof type.right === 'string'"
-      >
-        {{ type.right }}
-      </p>
-      <div v-else></div>
+      <p @click="handleCreatePostBtn">완료</p>
     </Flex>
   </header>
 </template>
@@ -42,9 +30,10 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user";
 import { USER_TYPE } from "@/constants/user";
 import { postProject } from "@/apis/project/postProject";
-
+import Logo from "@/assets/svg/logo.svg";
+import BellIcon from "@/assets/svg/bellIcon.svg";
+import ArrowLeftIcon from "@/assets/svg/arrowLeftIcon.svg";
 const userStore = useUserStore();
-
 const router = useRouter();
 const props = defineProps({
   left: Object | String,
@@ -53,7 +42,9 @@ const props = defineProps({
 });
 
 const postStore = usePostStore();
-
+const handleArrowClick = () => {
+  router.back();
+};
 const handleCreatePostBtn = async () => {
   if (userStore.getUserType() === USER_TYPE.AGENCY) {
     try {

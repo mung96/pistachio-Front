@@ -10,22 +10,11 @@
       padding-right="16px"
       padding-left="16px"
     >
-      <component v-if="typeof type.left === 'object'" :is="type.left" />
-      <p v-else-if="typeof type.left === 'string'">{{ type.left }}</p>
-      <div v-else></div>
-
-      <component v-if="typeof type.center === 'object'" :is="type.center" />
-      <p v-else-if="typeof type.center === 'string'">{{ type.center }}</p>
-      <div v-else></div>
-
-      <component v-if="typeof type.right === 'object'" :is="type.right" />
-      <p
-        @click="handleCreatePostBtn"
-        v-else-if="typeof type.right === 'string'"
-      >
-        {{ type.right }}
-      </p>
-      <div v-else></div>
+      <Flex @click="handleArrowClick" align="center">
+        <ArrowLeftIcon />
+        <Logo width="100px" />
+      </Flex>
+      <div></div>
     </Flex>
   </header>
 </template>
@@ -42,9 +31,9 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/user";
 import { USER_TYPE } from "@/constants/user";
 import { postProject } from "@/apis/project/postProject";
-
+import ArrowLeftIcon from "@/assets/svg/arrowLeftIcon.svg";
+import Logo from "@/assets/svg/logo.svg";
 const userStore = useUserStore();
-
 const router = useRouter();
 const props = defineProps({
   left: Object | String,
@@ -53,7 +42,9 @@ const props = defineProps({
 });
 
 const postStore = usePostStore();
-
+const handleArrowClick = () => {
+  router.back();
+};
 const handleCreatePostBtn = async () => {
   if (userStore.getUserType() === USER_TYPE.AGENCY) {
     try {
@@ -79,10 +70,8 @@ const route = useRoute();
 
 // route에 따라 렌더링 로직 다시짜야할듯
 const type = computed(() => {
-  console.log(route.name);
   const key = Object.keys(PATH).findIndex((key) => NAME[key] === route.name);
   Object.keys(PATH).forEach((key) => console.log(NAME[key]));
-  console.log(TOP_BAR_TYPE[Object.keys(PATH)[key]]);
   return TOP_BAR_TYPE[Object.keys(PATH)[key]];
 });
 

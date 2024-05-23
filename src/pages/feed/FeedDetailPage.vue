@@ -1,16 +1,19 @@
 <template>
-  <main>
-    <Flex direction="column" gap="20px">
-      <Feed :feed="feed" type="detail" />
-      <Flex direction="column" gap="8px">
-        <FeedComment
-          v-for="comment in comments"
-          :comment="comment"
-          :key="comment"
-      /></Flex>
-      <CommentInput />
-    </Flex>
-  </main>
+  <div>
+    <TopbarMy />
+    <main>
+      <Flex direction="column" gap="20px">
+        <Feed :feed="feed" type="detail" />
+        <Flex direction="column" gap="8px">
+          <FeedComment
+            v-for="comment in comments"
+            :comment="comment"
+            :key="comment"
+        /></Flex>
+        <CommentInput />
+      </Flex>
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -22,6 +25,7 @@ import CommentInput from "@/components/feed/CommentInput.vue";
 import { ref, watch, watchEffect, onUnmounted } from "vue";
 import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
 import { KEY } from "@/utils/likeLocalStorage";
+import TopbarMy from "@/components/common/topbar/TopbarMy.vue";
 
 const store = useFeedStore();
 const feed = store.getFeed();
