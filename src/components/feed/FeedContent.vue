@@ -48,7 +48,7 @@ const isSeeMore = ref(false);
 const emit = defineEmits(["donationModalOpen"]);
 
 const handleMoneyClick = () => {
-  console.log(1);
+  store.setFeed(props.feed);
   emit("donationModalOpen");
 };
 

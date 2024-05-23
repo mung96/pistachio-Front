@@ -16,6 +16,7 @@ export const END_POINTS = {
   LIKE_UPDATE: "/feed/likes-update",
   COMMENT: (feedId) => `/feed/${feedId}/comments`,
 
+  DONATE: "/donate",
   PROJECT: "/donate/project",
 };
 

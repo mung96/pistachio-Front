@@ -3,7 +3,7 @@
   <Flex direction="column" class="modal" align="center" gap="20px">
     <h3>기부금액을 입력해주세요</h3>
     <Flex align="center" gap="16px">
-      <input @input="handleInput" class="pista-input" />
+      <input @input="handleInput" type="number" class="pista-input" />
       <label class="pista">pista</label>
     </Flex>
     <Button :disabled="!money" @click="handleBtnClick">기부하기</Button>
@@ -17,9 +17,18 @@ import Button from "@/components/common/button/Button.vue";
 import { useRouter } from "vue-router";
 import { PATH } from "@/constants/router";
 import { ref } from "vue";
+import { postDonate } from "@/apis/donate/postDonate";
+import { useFeedStore } from "@/stores/feed";
+import { useUserStore } from "@/stores/user";
 
 const router = useRouter();
 const money = ref(null);
+
+const feedStore = useFeedStore();
+const userStore = useUserStore();
+
+console.log(feedStore.getFeed());
+console.log(userStore.getUser());
 
 const emit = defineEmits(["donationModalOpen"]);
 
@@ -33,6 +42,16 @@ const handleDimClick = () => {
 
 const handleBtnClick = () => {
   //API요청
+  try {
+    const response = postDonate({
+      projectId: feedStore.getFeed().feed.projectId,
+      userId: userStore.getUser().userId,
+      amount: money.value,
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
 
   emit("donationModalOpen");
 };
