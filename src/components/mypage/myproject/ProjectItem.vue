@@ -50,6 +50,9 @@ onMounted(async () => {
     if (matchedFeed) {
       feed.value = matchedFeed;
       console.log(feed.value);
+      store.setProject({
+        boast: props.project.boast,
+      });
       // if (feed.value.feedPictures && feed.value.feedPictures.length > 0) {
       //   console.log(imageURLParser(feed.value.feedPictures[0].url));
       // }
