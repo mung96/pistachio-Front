@@ -70,10 +70,8 @@ const route = useRoute();
 
 // route에 따라 렌더링 로직 다시짜야할듯
 const type = computed(() => {
-  console.log(route.name);
   const key = Object.keys(PATH).findIndex((key) => NAME[key] === route.name);
   Object.keys(PATH).forEach((key) => console.log(NAME[key]));
-  console.log(TOP_BAR_TYPE[Object.keys(PATH)[key]]);
   return TOP_BAR_TYPE[Object.keys(PATH)[key]];
 });
 

@@ -20,7 +20,10 @@ import { getDonate } from "@/apis/donate/getDonate";
 import { ref } from "vue";
 import { onMounted } from "vue";
 import TopbarMy from "@/components/common/topbar/TopbarMy.vue";
+import { getMyFeed } from "@/apis/feed/getMyFeed";
+import { getProject } from "@/apis/donate/getProject";
 const posts = ref([]);
+const userStore = useUserStore();
 const { userType } = useUserStore();
 
 onMounted(async () => {

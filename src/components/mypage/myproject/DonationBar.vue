@@ -1,5 +1,6 @@
 <template>
   <Flex
+    v-if="userStore.getUser().userType === USER_TYPE.USER"
     class="donation-bar"
     height="56px"
     width="100%"
@@ -8,32 +9,44 @@
     justify="stretch"
     gap="8px"
   >
-    <Flex @click="handleClickHeart" direction="column" align="center">
-      <p>{{ project.like }}</p>
-      <HeartIcon :fill="isLike ? '#50d6b0' : 'none'" />
-      <p class="like-cnt">{{ likeCount }}</p>
-    </Flex>
-
-    <Button>후원하기</Button>
+    <Button :disabled="projectStore.getProject().boast" @click="handleAuthBtn"
+      >인증하기</Button
+    >
   </Flex>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
 import Flex from "@/design/Flex.vue";
 import Button from "@/components/common/button/Button.vue";
-import HeartIcon from "@/assets/svg/heartIcon.svg";
 import { useProjectStore } from "@/stores/project";
+import { useUserStore } from "@/stores/user";
+import { USER_TYPE } from "@/constants/user";
+import { PATH } from "@/constants/router";
+import { usePostStore } from "@/stores/post";
 
+const router = useRouter();
+const userStore = useUserStore();
 const store = useProjectStore();
-const project = store.getProject();
-const isLike = ref(project.isLike);
+const project = ref(store.getProject());
+const isLike = ref(project.value.isLike);
+const likeCount = computed(() => project.value.likeCnt);
+const projectStore = useProjectStore();
+const postStore = usePostStore();
+// const handleClickHeart = () => {
+//   isLike.value = !isLike.value;
+//   project.value.likeCnt = isLike.value
+//     ? project.value.likeCnt + 1
+//     : project.value.likeCnt - 1;
+// };
 
-const likeCount = computed(() => project.likeCnt);
-
-const handleClickHeart = () => {
-  isLike.value = !isLike.value;
-  project.likeCnt = isLike.value ? project.likeCnt + 1 : project.likeCnt - 1;
+console.log(project.value);
+const handleAuthBtn = () => {
+  postStore.setPostType("project");
+  postStore.setProjectId(project.value.projectId);
+  postStore.setProjectName(project.value.projectName);
+  router.push(PATH.POST);
 };
 </script>
 
@@ -43,6 +56,7 @@ const handleClickHeart = () => {
   position: fixed;
   bottom: 0;
   background-color: white;
+  z-index: 9999;
 }
 .like-cnt {
   font: var(--base-mm-font);
