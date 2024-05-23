@@ -60,6 +60,7 @@ import { checkPwdConfirm } from "@/utils/validator";
 import VisibleIcon from "@/assets/svg/visibleIcon.svg";
 import InVisibleIcon from "@/assets/svg/inVisibleIcon.svg";
 import Flex from "@/design/Flex.vue";
+import { postMembership } from "@/apis/donate/postMembership";
 
 const props = defineProps({
   title: String,
@@ -128,6 +129,7 @@ const handleBtnClick = async () => {
     //회원가입성공
     if (status === HTTP_STATUS_CODE.CREATED) {
       // TODO: 모달을 띄우고 로그인하러가기 누르면 로그인 페이지로 이동
+
       emit("modalOpen");
       return;
     }

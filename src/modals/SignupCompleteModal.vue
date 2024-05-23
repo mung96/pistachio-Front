@@ -6,7 +6,7 @@
       <p>가입을 축하합니다!</p>
       <p>기부로 세상을 따듯하게 만들어주세요.</p>
     </Flex>
-    <Button @click="handleBtnClick">로그인하러 가기</Button>
+    <Button @click="handleBtnClick">자동로그인 히기</Button>
   </Flex>
 </template>
 
@@ -16,10 +16,39 @@ import Flex from "@/design/Flex.vue";
 import Button from "@/components/common/button/Button.vue";
 import { useRouter } from "vue-router";
 import { PATH } from "@/constants/router";
-
+import { postLogin } from "@/apis/login/postLogin";
+import { postMembership } from "@/apis/donate/postMembership";
+import { useSignupStore } from "@/stores/signup";
+import { useUserStore } from "@/stores/user";
+import { HTTP_STATUS_CODE } from "@/constants/api";
+const signupStore = useSignupStore();
+const userStore = useUserStore();
 const router = useRouter();
-const handleBtnClick = () => {
-  router.push(PATH.LOGIN);
+const handleBtnClick = async () => {
+  try {
+    const response = await postLogin({
+      email: signupStore.getUser().email,
+      password: signupStore.getUser().password,
+    });
+    if (response.status === HTTP_STATUS_CODE.SUCCESS) {
+      //이후 피드페이지로 이동
+      userStore.setUser(response.data);
+      console.log(userStore.getUser());
+      userStore.setUserType(response.data.userType);
+
+      try {
+        const response = await postMembership(userStore.getUser().name);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+
+      router.push(PATH.FEED);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  // router.push(PATH.LOGIN);
 };
 </script>
 

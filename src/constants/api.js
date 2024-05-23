@@ -18,6 +18,8 @@ export const END_POINTS = {
 
   DONATE: "/donate",
   PROJECT: "/donate/project",
+  RECHARGE: "/donate/recharge",
+  MEMBERSHIP: "/donate/membership",
 };
 
 export const HTTP_STATUS_CODE = {

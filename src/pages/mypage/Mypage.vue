@@ -1,5 +1,6 @@
 <template>
   <main>
+    <PistaModal />
     <Flex direction="column" gap="12px">
       <Title>{{ user.name }}</Title>
       <Profile />
@@ -14,6 +15,7 @@ import Category from "@/components/mypage/Category.vue";
 import Flex from "@/design/Flex.vue";
 import Title from "@/components/common/title/Title.vue";
 import { useUserStore } from "@/stores/user";
+import PistaModal from "@/modals/PistaModal.vue";
 
 const userStore = useUserStore();
 const user = userStore.getUser();
