@@ -37,7 +37,6 @@ const feed = ref(null); // Changed from an array to a single object
 const store = useProjectStore();
 
 const handleProjectClick = () => {
-  store.setProject(props.project);
   router.push(PATH.PROJECT_DETAIL(props.project.projectId));
 };
 
@@ -51,8 +50,14 @@ onMounted(async () => {
       feed.value = matchedFeed;
       console.log(feed.value);
       store.setProject({
+        projectId: props.project.projectId,
+        projectName: props.project.projectName,
+        projectDescription: props.project.projectDescription,
         boast: props.project.boast,
+        images: feed.value.feedPictures,
       });
+      console.log(feed.value.feedPictures);
+      console.log(store.getProject());
       // if (feed.value.feedPictures && feed.value.feedPictures.length > 0) {
       //   console.log(imageURLParser(feed.value.feedPictures[0].url));
       // }
