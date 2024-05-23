@@ -21,9 +21,15 @@
         ><span>{{ user.followingCnt }}</span
         ><span>팔로잉</span></Flex
       >
-      <Flex direction="column" align="center" gap="4px"
-        ><span>{{ user.pista }}</span
-        ><span class="pista">pista</span></Flex
+      <Flex
+        id="pista"
+        direction="column"
+        align="center"
+        gap="4px"
+        @click="handlePistaClick"
+      >
+        <span>{{ pista }}</span>
+        <span class="pista">pista</span></Flex
       >
     </Flex>
   </Flex>
@@ -36,12 +42,19 @@ import { useUserStore } from "@/stores/user";
 import { postProfile } from "@/apis/mypage/postProfile";
 import { imageURLParser } from "@/utils/imageURLParser";
 import PistaIcon from "@/assets/svg/pistaIcon.svg";
-
+import { computed, ref } from "vue";
 const { user } = useUserStore();
 const userStore = useUserStore();
-console.log(user);
+const pista = ref(localStorage.getItem("pista") || user.pista);
+const emit = defineEmits(["pistaModalOpen"]);
 
-const handleProfileClick = () => {};
+const handlePistaClick = () => {
+  console.log(1);
+  pista.value = localStorage.getItem("pista");
+  emit("pistaModalOpen");
+};
+localStorage.setItem("pista", user.pista);
+console.log(user.pista);
 
 const handleFileChange = async (e) => {
   //바꾸면 요청 보내고 응답으로 아예 프로필을 바꾸자.

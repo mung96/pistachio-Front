@@ -49,6 +49,10 @@ const handleBtnClick = async () => {
       pistaAmount: money.value,
     });
     console.log(response);
+    localStorage.setItem(
+      "pista",
+      localStorage.getItem("pista") * 1 + money.value * 1
+    );
     emit("pistaModalOpen");
 
     console.log(response);
