@@ -1,7 +1,12 @@
 <template>
   <main>
     <Flex direction="column" gap="32px">
-      <Feed v-for="feed in feeds" :feed="feed" :key="feed" />
+      <Feed
+        v-for="feed in feeds"
+        :feed="feed"
+        :key="feed"
+        @click="handleFeedClick"
+      />
     </Flex>
   </main>
 </template>
@@ -13,13 +18,14 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
 import { getFeeds } from "@/apis/feed/getFeeds";
 import { KEY } from "@/utils/likeLocalStorage";
+
 const feeds = ref([]);
 
 onMounted(async () => {
   try {
     const response = await getFeeds();
+    console.log(response.data);
     feeds.value = response.data;
-    console.log(feeds.value);
   } catch (error) {
     console.log(error);
   }

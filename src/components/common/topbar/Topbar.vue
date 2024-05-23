@@ -39,6 +39,11 @@ import { useRoute } from "vue-router";
 import { usePostStore } from "@/stores/post";
 import { postFeed } from "@/apis/feed/postFeed";
 import { useRouter } from "vue-router";
+import { useUserStore } from "@/stores/user";
+import { USER_TYPE } from "@/constants/user";
+import { postProject } from "@/apis/project/postProject";
+
+const userStore = useUserStore();
 
 const router = useRouter();
 const props = defineProps({
@@ -50,6 +55,14 @@ const props = defineProps({
 const postStore = usePostStore();
 
 const handleCreatePostBtn = async () => {
+  if (userStore.getUserType() === USER_TYPE.AGENCY) {
+    try {
+      const response = await postProject();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   try {
     const response = await postFeed();
     postStore.setImages([]);

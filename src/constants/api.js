@@ -15,6 +15,8 @@ export const END_POINTS = {
   FEED_ONE: (feedId) => `/feed/${feedId}`,
   LIKE_UPDATE: "/feed/likes-update",
   COMMENT: (feedId) => `/feed/${feedId}/comments`,
+
+  PROJECT: "/donate/project",
 };
 
 export const HTTP_STATUS_CODE = {
