@@ -15,6 +15,7 @@ export const postFeed = async () => {
           JSON.stringify({
             projectId: store.projectId || 1,
             content: store.getContent(),
+            isBoast: true,
           }),
         ],
         { type: "application/json" }
