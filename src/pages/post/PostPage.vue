@@ -4,6 +4,7 @@
       <ImageUpload />
       <PostContent />
       <PostTag />
+      <ChatGpt />
     </Flex>
   </form>
 </template>
@@ -14,6 +15,7 @@ import Flex from "@/design/Flex.vue";
 import PostTag from "@/components/post/PostTag.vue";
 import { usePostStore } from "@/stores/post";
 import { useUserStore } from "@/stores/user";
+import ChatGpt from "@/components/post/ChatGpt.vue";
 
 const postStore = usePostStore();
 const userStore = useUserStore();

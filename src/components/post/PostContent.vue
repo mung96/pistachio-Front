@@ -4,6 +4,7 @@
       rows="9"
       @keydown="handleKeyDown"
       :maxlength="POST_CONTENT_LENGTH"
+      v-model="store.content"
     ></textarea>
     <span>{{ message.length }}/{{ POST_CONTENT_LENGTH }}</span>
   </div>
