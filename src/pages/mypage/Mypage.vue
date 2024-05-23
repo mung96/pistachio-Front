@@ -1,12 +1,15 @@
 <template>
-  <main>
-    <PistaModal v-if="isModalOpen" @pistaModalOpen="handleModalOpen" />
-    <Flex direction="column" gap="12px">
-      <Title>{{ user.name }}</Title>
-      <Profile @pistaModalOpen="handleModalOpen2" :tempPista="pista" />
-      <Category />
-    </Flex>
-  </main>
+  <div>
+    <TopbarMain />
+    <main>
+      <PistaModal v-if="isModalOpen" @pistaModalOpen="handleModalOpen" />
+      <Flex direction="column" gap="12px">
+        <Title>{{ user.name }}</Title>
+        <Profile @pistaModalOpen="handleModalOpen2" :tempPista="pista" />
+        <Category />
+      </Flex>
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -17,13 +20,13 @@ import Title from "@/components/common/title/Title.vue";
 import { useUserStore } from "@/stores/user";
 import PistaModal from "@/modals/PistaModal.vue";
 import { ref } from "vue";
+import TopbarMain from "@/components/common/topbar/TopbarMain.vue";
 const userStore = useUserStore();
 const user = userStore.getUser();
 const isModalOpen = ref(false);
 const pista = ref();
 
 const handleModalOpen = () => {
-  console.log(111);
   isModalOpen.value = !isModalOpen.value;
   pista.value = localStorage.getItem("pista");
   if (isModalOpen) {

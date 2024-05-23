@@ -1,7 +1,7 @@
 <template>
   <Flex
     padding-left="16px"
-    padding-right="16px"
+    padding-right="32px"
     justify="space-between"
     align="center"
   >

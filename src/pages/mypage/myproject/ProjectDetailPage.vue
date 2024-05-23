@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TopbarMy />
     <main>
       <Flex direction="column" gap="12px">
         <Title>{{ post.projectName }}</Title>
@@ -43,6 +44,7 @@ import { imageURLParser } from "@/utils/imageURLParser";
 import { onMounted } from "vue";
 import { getProjectDetail } from "@/apis/project/getProjectDetail";
 import { ref } from "vue";
+import TopbarMy from "@/components/common/topbar/TopbarMy.vue";
 const store = useProjectStore();
 const post = store.project;
 const money = ref(0);

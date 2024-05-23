@@ -1,39 +1,42 @@
 <template>
-  <main>
-    <SignupCompleteModal v-if="isModalOpen" />
+  <div>
+    <TopbarMy />
+    <main>
+      <SignupCompleteModal v-if="isModalOpen" />
 
-    <UserTypePage v-if="step === FIELD.USER_TYPE" />
+      <UserTypePage v-if="step === FIELD.USER_TYPE" />
 
-    <AuthInput
-      v-if="step === FIELD.EMAIL"
-      :field="FIELD.EMAIL"
-      title="이메일"
-      btnText="인증번호 전송하기"
-      :next="FIELD.USER_NAME"
-    />
-    <!-- <AuthInput
+      <AuthInput
+        v-if="step === FIELD.EMAIL"
+        :field="FIELD.EMAIL"
+        title="이메일"
+        btnText="인증번호 전송하기"
+        :next="FIELD.USER_NAME"
+      />
+      <!-- <AuthInput
       v-if="step === FIELD.EMAIL_AUTH"
       :field="FIELD.EMAIL_AUTH"
       title="이메일 인증"
       btnText="인증하기"
       :next="FIELD.USER_NAME"
     /> -->
-    <AuthInput
-      v-if="step === FIELD.USER_NAME"
-      :field="FIELD.USER_NAME"
-      title="이름"
-      btnText="이름 사용하기"
-      :next="FIELD.PWD"
-    />
-    <AuthInput
-      v-if="step === FIELD.PWD"
-      :field="FIELD.PWD"
-      title="비밀번호"
-      btnText="가입하기"
-      :next="FIELD.EMAIL"
-      @modal-open="handleModalOpen"
-    />
-  </main>
+      <AuthInput
+        v-if="step === FIELD.USER_NAME"
+        :field="FIELD.USER_NAME"
+        title="이름"
+        btnText="이름 사용하기"
+        :next="FIELD.PWD"
+      />
+      <AuthInput
+        v-if="step === FIELD.PWD"
+        :field="FIELD.PWD"
+        title="비밀번호"
+        btnText="가입하기"
+        :next="FIELD.EMAIL"
+        @modal-open="handleModalOpen"
+      />
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -50,6 +53,7 @@ import UserTypePage from "@/components/signup/UserTypePage.vue";
 const handleModalOpen = () => {
   isModalOpen.value = true;
 };
+import TopbarMy from "@/components/common/topbar/TopbarMy.vue";
 </script>
 
 <style>

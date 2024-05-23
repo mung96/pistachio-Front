@@ -1,16 +1,19 @@
 <template>
-  <main>
+  <div>
+    <TopbarMain />
     <Searchbar class="searchbar" />
-    <Flex direction="column" class="results">
-      <Result v-for="result in results" :key="result" :result="result" />
-    </Flex>
-  </main>
+    <main>
+      <Flex direction="column" class="results">
+        <Result v-for="result in results" :key="result" :result="result" />
+      </Flex>
+    </main>
+  </div>
 </template>
 
 <script setup>
 import Flex from "@/design/Flex.vue";
 import Result from "@/components/search/Result.vue";
-
+import TopbarMain from "@/components/common/topbar/TopbarMain.vue";
 import Searchbar from "@/components/search/Searchbar.vue";
 import { searchResult } from "@/dummy/search";
 import { ref } from "vue";

@@ -1,10 +1,13 @@
 <template>
-  <main>
-    <Title v-if="userType === USER_TYPE.USER">내가 한 기부</Title>
-    <Title v-if="userType === USER_TYPE.PISTACHIO">참여 프로젝트</Title>
-    <Title v-if="userType === USER_TYPE.AGENCY">모든 프로젝트</Title>
-    <PostItem v-for="post in posts" :key="post" :post="post" type="project" />
-  </main>
+  <div>
+    <TopbarMy />
+    <main>
+      <Title v-if="userType === USER_TYPE.USER">내가 한 기부</Title>
+      <Title v-if="userType === USER_TYPE.PISTACHIO">참여 프로젝트</Title>
+      <Title v-if="userType === USER_TYPE.AGENCY">모든 프로젝트</Title>
+      <PostItem v-for="post in posts" :key="post" :post="post" type="project" />
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -16,6 +19,7 @@ import { useUserStore } from "@/stores/user";
 import { getDonate } from "@/apis/donate/getDonate";
 import { ref } from "vue";
 import { onMounted } from "vue";
+import TopbarMy from "@/components/common/topbar/TopbarMy.vue";
 const posts = ref([]);
 const { userType } = useUserStore();
 

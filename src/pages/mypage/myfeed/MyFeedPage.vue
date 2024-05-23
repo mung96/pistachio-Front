@@ -1,9 +1,12 @@
 <template>
-  <main>
-    <Title v-if="type === 'post'">작성한 글</Title>
-    <Title v-if="type === 'like'">좋아요 누른 글</Title>
-    <PostItem v-for="post in posts" :key="post" :post="post" type="feed" />
-  </main>
+  <div>
+    <TopbarMy />
+    <main>
+      <Title v-if="type === 'post'">작성한 글</Title>
+      <Title v-if="type === 'like'">좋아요 누른 글</Title>
+      <PostItem v-for="post in posts" :key="post" :post="post" type="feed" />
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -14,7 +17,7 @@ import { getFeeds } from "@/apis/feed/getFeeds";
 import { useRoute } from "vue-router";
 import { PATH } from "@/constants/router";
 import { getMyFeed } from "@/apis/feed/getMyFeed";
-
+import TopbarMy from "@/components/common/topbar/TopbarMy.vue";
 const route = useRoute();
 const posts = ref([]);
 const type = ref("");

@@ -10,29 +10,17 @@
       padding-right="16px"
       padding-left="16px"
     >
-      <component v-if="typeof type.left === 'object'" :is="type.left" />
-      <p v-else-if="typeof type.left === 'string'">{{ type.left }}</p>
-      <div v-else></div>
+      <Logo />
 
-      <component v-if="typeof type.center === 'object'" :is="type.center" />
-      <p v-else-if="typeof type.center === 'string'">{{ type.center }}</p>
-      <div v-else></div>
-
-      <component v-if="typeof type.right === 'object'" :is="type.right" />
-      <p
-        @click="handleCreatePostBtn"
-        v-else-if="typeof type.right === 'string'"
-      >
-        {{ type.right }}
-      </p>
-      <div v-else></div>
+      <BellIcon />
     </Flex>
   </header>
 </template>
 
 <script setup>
 import Flex from "@/design/Flex.vue";
-
+import Logo from "@/assets/svg/logo.svg";
+import BellIcon from "@/assets/svg/bellIcon.svg";
 import { ref, computed } from "vue";
 import { NAME, PATH, TOP_BAR_TYPE } from "@/constants/router";
 import { useRoute } from "vue-router";

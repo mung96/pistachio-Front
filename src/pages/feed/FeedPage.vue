@@ -1,14 +1,17 @@
 <template>
-  <main>
-    <Flex direction="column" gap="32px">
-      <Feed
-        v-for="feed in feeds"
-        :feed="feed"
-        :key="feed"
-        @click="handleFeedClick"
-      />
-    </Flex>
-  </main>
+  <div>
+    <TopbarMain />
+    <main>
+      <Flex direction="column" gap="32px">
+        <Feed
+          v-for="feed in feeds"
+          :feed="feed"
+          :key="feed"
+          @click="handleFeedClick"
+        />
+      </Flex>
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -18,7 +21,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { postLikeUpdate } from "@/apis/feed/postLikeUpdate";
 import { getFeeds } from "@/apis/feed/getFeeds";
 import { KEY } from "@/utils/likeLocalStorage";
-
+import TopbarMain from "@/components/common/topbar/TopbarMain.vue";
 const feeds = ref([]);
 
 onMounted(async () => {
