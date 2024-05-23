@@ -13,11 +13,13 @@
 import { ref } from "vue";
 import { POST_CONTENT_LENGTH } from "@/constants/ui";
 import { usePostStore } from "@/stores/post";
-const message = ref("");
+import { watch } from "vue";
 const store = usePostStore();
+const message = ref("");
 
 const handleKeyDown = (e) => {
   store.setContent(e.target.value);
+  message.value = e.target.value;
 };
 </script>
 

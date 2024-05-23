@@ -5,18 +5,18 @@
     align="center"
     justify="space-between"
   >
-    <Flex gap="12px" align="center">
+    <Flex gap="12px" align="center" justify="start">
       <img
         v-if="feed && feed.feedPictures && feed.feedPictures.length > 0"
         :src="imageURLParser(feed.feedPictures[0].url)"
         alt="프로젝트사진"
       />
-      <Flex direction="column" align="center">
-        <span>{{ project.projectName }}</span>
-        <span>{{ project.projectDescription }}</span>
+      <Flex direction="column">
+        <span class="project-name">{{ project.projectName }}</span>
+        <span>{{ project.projectDescription.slice(0, 15) }}</span>
       </Flex>
     </Flex>
-    <span>상세보기</span>
+    <span class="seemore">상세보기</span>
   </Flex>
 </template>
 
@@ -75,10 +75,17 @@ span {
   font: var(--sm-pre-font);
   white-space: nowrap;
 }
+.project-name {
+  color: var(--sub-color);
+  font: var(--base-mm-font);
+}
 img {
   width: 64px;
   height: 64px;
   border: 1px solid black;
+}
+.seemore {
+  color: var(--gray600-color);
 }
 .item-container {
   border-bottom: 1px solid var(--gray200-color);

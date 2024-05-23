@@ -3,7 +3,7 @@ import BellIcon from "@/assets/svg/bellIcon.svg";
 import ArrowLeftIcon from "@/assets/svg/arrowLeftIcon.svg";
 
 export const PATH = {
-  FEED: "/",
+  FEED: "/feed",
   SEARCH: "/search",
   POST: "/post",
 
@@ -16,7 +16,7 @@ export const PATH = {
   FEED_DETAIL: (postId) => `/feed/${postId}`,
   UPDATE_PASSWORD: "/update-password",
 
-  LOGIN: "/login",
+  LOGIN: "/",
   SIGNUP: "/signup",
 };
 

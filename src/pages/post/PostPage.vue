@@ -6,7 +6,12 @@
         <ImageUpload />
         <PostContent />
         <PostTag />
-        <ChatGpt />
+        <ChatGpt
+          v-if="
+            postStore.getPostType() === 'project' &&
+            userStore.getUserType() === USER_TYPE.USER
+          "
+        />
       </Flex>
     </form>
   </div>
@@ -20,6 +25,7 @@ import { usePostStore } from "@/stores/post";
 import { useUserStore } from "@/stores/user";
 import ChatGpt from "@/components/post/ChatGpt.vue";
 import TopbarPost from "@/components/common/topbar/TopbarPost.vue";
+import { USER_TYPE } from "@/constants/user";
 const postStore = usePostStore();
 const userStore = useUserStore();
 </script>

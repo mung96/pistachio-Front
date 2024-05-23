@@ -29,8 +29,8 @@
     </Flex>
 
     <Flex gap="8px" align="center">
-      <p class="project" v-if="feedWriter.userType !== USER_TYPE.USER">
-        {{ feedWriter.project }}
+      <p class="project" v-if="props.feed.feed.projectId !== 1">
+        {{ projectName }}
       </p>
       <p
         class="organization"
@@ -53,13 +53,27 @@ import { USER_TYPE } from "@/constants/user";
 import { useUserStore } from "@/stores/user";
 import { imageURLParser } from "@/utils/imageURLParser";
 import BasicProfileIcon from "@/assets/svg/basicProfileIcon.svg";
-
+import { useFeedStore } from "@/stores/feed";
+import { onMounted } from "vue";
+import { getProjectDetail } from "@/apis/project/getProjectDetail";
+import { ref } from "vue";
 const userStore = useUserStore();
 const props = defineProps({
   feedWriter: Object,
   isFollow: Boolean,
+  feed: Object,
 });
-console.log(props.feedWriter);
+const projectName = ref();
+console.log(props.feed.feed.projectId);
+onMounted(async () => {
+  try {
+    const response = await getProjectDetail(props.feed.feed.projectId);
+    projectName.value = response.data.name;
+    console.log(response.data.name);
+  } catch (error) {
+    console.log(error);
+  }
+});
 </script>
 
 <style scoped>
@@ -88,7 +102,7 @@ img {
 }
 .project {
   font: var(--lg-mm-font);
-  color: var(--sub-color);
+  color: var(--gray700-color);
 }
 .organization {
   font: var(--lg-mm-font);

@@ -5,6 +5,7 @@
       <FeedProfile
         :feedWriter="props.feed.userResponse"
         :isFollow="props.feed.userFollow"
+        :feed="props.feed"
       />
       <FeedPictures :pictures="props.feed.feedPictures" />
       <FeedContent

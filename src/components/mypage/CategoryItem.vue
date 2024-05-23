@@ -16,6 +16,7 @@
 import Flex from "@/design/Flex.vue";
 import ArrowRightIcon from "@/assets/svg/arrowRightIcon.svg";
 import { useRouter } from "vue-router";
+import { PATH } from "@/constants/router";
 const router = useRouter();
 const props = defineProps({
   category: Object,
@@ -24,6 +25,7 @@ const props = defineProps({
 const handleCategoryClick = () => {
   if (props.category.name === "로그아웃") {
     console.log(document.cookie);
+    router.push(PATH.LOGIN);
     document.cookie =
       "SESSION=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   } else {

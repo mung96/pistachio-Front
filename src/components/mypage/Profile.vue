@@ -42,7 +42,8 @@ import { useUserStore } from "@/stores/user";
 import { postProfile } from "@/apis/mypage/postProfile";
 import { imageURLParser } from "@/utils/imageURLParser";
 import PistaIcon from "@/assets/svg/pistaIcon.svg";
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { postLogin } from "@/apis/login/postLogin";
 const { user } = useUserStore();
 const userStore = useUserStore();
 const pista = ref(localStorage.getItem("pista") || user.pista);
@@ -55,6 +56,20 @@ const handlePistaClick = () => {
 };
 localStorage.setItem("pista", user.pista);
 console.log(user.pista);
+
+onMounted(async () => {
+  try {
+    const response = await postLogin({
+      email: userStore.getUser().email,
+      password: "ssafy1234*",
+    });
+    console.log(response.data);
+    userStore.setUser(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+  pista.value = userStore.getUser().pista;
+});
 
 const handleFileChange = async (e) => {
   //바꾸면 요청 보내고 응답으로 아예 프로필을 바꾸자.

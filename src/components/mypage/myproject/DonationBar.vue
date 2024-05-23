@@ -46,6 +46,7 @@ const handleAuthBtn = () => {
   postStore.setPostType("project");
   postStore.setProjectId(project.value.projectId);
   postStore.setProjectName(project.value.projectName);
+  postStore.setPostType("project");
   router.push(PATH.POST);
 };
 </script>

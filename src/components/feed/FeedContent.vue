@@ -4,7 +4,14 @@
       <div @click="handleClickHeart">
         <HeartIcon :fill="isLike ? '#50d6b0' : 'none'" />
       </div>
-      <div @click="handleMoneyClick">
+      <!-- 작성자가 기관이면서 내가 아닐떄 뜸 -->
+      <div
+        v-if="
+          feed.userResponse.userId !== userStore.getUser().userId &&
+          feed.feed.projectId !== 1
+        "
+        @click="handleMoneyClick"
+      >
         <MoneyIcon />
       </div>
     </Flex>
@@ -31,6 +38,7 @@ import HeartIcon from "@/assets/svg/heartIcon.svg";
 import { onMounted, ref } from "vue";
 import { PATH } from "@/constants/router";
 import { useFeedStore } from "@/stores/feed";
+import { useUserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
 import { likeLocalStorage } from "@/utils/likeLocalStorage";
 
@@ -39,9 +47,9 @@ const props = defineProps({
   type: String,
 });
 const router = useRouter();
-
+console.log(props.feed);
 const store = useFeedStore();
-
+const userStore = useUserStore();
 const isLike = ref(props.feed.userLike); //응답에서 isLike 긁어오기
 const like = ref(props.feed.feed.likeCnt);
 const isSeeMore = ref(false);

@@ -5,7 +5,7 @@
     align="center"
     justify="space-between"
   >
-    <Flex gap="12px" align="center">
+    <Flex gap="12px" align="center" justify="start">
       <img :src="imageURLParser(feed.feedPictures[0].url)" alt="게시글 사진" />
       <Flex direction="column">
         <!-- <span>{{ post.name }}</span> -->
